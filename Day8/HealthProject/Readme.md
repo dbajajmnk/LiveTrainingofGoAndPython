@@ -8,7 +8,7 @@
 app.py write your code there
 
 ## Run your first project
-py uvicorn 
+py -m uvicorn app:app --reload
 
 
 ## Crate a enviroment and acivate
