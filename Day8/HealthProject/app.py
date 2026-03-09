@@ -21,7 +21,7 @@
 
 from fastapi import FastAPI,Depends,HTTPException
 from sqlalchemy import create_engine,Integer,String,Column
-from sqlalchemy.orm import declarative_base,sessionmaker,session
+from sqlalchemy.orm import declarative_base,sessionmaker,Session
 from pydantic import BaseModel,Field
 from typing import List,Optional
 
