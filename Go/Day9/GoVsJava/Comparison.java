@@ -2,6 +2,10 @@ public class Comparison {
     public static void main(String[] args)
     {
         System.out.println("Hello World");
+        String myName;
+        String inUpperCase = myName.toUpperCase();
+
+        System.out.println(inUpperCase);
 
          int age=20;
     if(age>=18)
@@ -13,7 +17,7 @@ public class Comparison {
     {
         System.out.println(i);
     }
-    int j=0
+    int j=0;
     while(j<10)
     {
         System.out.println(j);

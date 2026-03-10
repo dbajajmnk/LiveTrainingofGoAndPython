@@ -3,27 +3,25 @@ package main
 import "fmt"
 
 /*
+Zero Type values
+Compiler check unused variables
+variable with var keyword
+Variable with type inherance
+Other Data types.
 
 
 
-
- */
+*/
 
 func main() {
 
-	var age int = 20
-
-	if age >= 18 {
-		fmt.Println("You are ellible for Vote")
-	}
-
-	for i := 0; i < 10; i++ {
-		fmt.Println(i)
-	}
-	j := 0
-	for j < 10 {
-		fmt.Println(j)
-		j++
-	}
+	var age int
+	fmt.Println(age)
+	var isTrue bool
+	fmt.Println(isTrue)
+	var name string
+	fmt.Println(name)
+	var price float32
+	fmt.Println(price)
 
 }
