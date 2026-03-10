@@ -10,3 +10,10 @@
 ## Find the leap year number
 ## Print Day name based on number
 ## Print the Month based on number
+## Print the Star patterns with loops
+    *
+    **
+    ***
+    ****
+    ****
+## Take a input of your Array from User try to perform looping program with Array 
