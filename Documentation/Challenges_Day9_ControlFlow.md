@@ -39,7 +39,7 @@ Day 10
     - meeting()
     - doAssignedWork
     - discussion
- Try to incorporate your knowledge of Functions and apply with methods and struct
+ Try to incorporate your knowledge of functions and apply with methods and struct
 
 ## Interfaces
 
