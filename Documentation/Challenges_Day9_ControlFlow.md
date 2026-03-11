@@ -17,3 +17,9 @@
     ****
     ****
 ## Take a input of your Array from User try to perform looping program with Array 
+
+Day 10 
+## Functions
+- conver some of the program of Day 9 with functions
+- use multiple return wisely and demostrate with yesterday programs
+- Try closure with multiple return and varidictic paramters as well different type parameters 
