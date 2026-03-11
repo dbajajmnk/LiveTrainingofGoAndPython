@@ -42,6 +42,11 @@ Day 10
  Try to incorporate your knowledge of functions and apply with methods and struct
 
 ## Interfaces
-
-
+- Create Project for Voting machine
+  - Trade offs
+    - able to get country 
+    - language info
+  - Dry
+  - KIS
+  - Scalability
 ## Dependency Injection
