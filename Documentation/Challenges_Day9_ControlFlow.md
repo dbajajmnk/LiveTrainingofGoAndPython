@@ -23,3 +23,25 @@ Day 10
 - conver some of the program of Day 9 with functions
 - use multiple return wisely and demostrate with yesterday programs
 - Try closure with multiple return and varidictic paramters as well different type parameters 
+## Struct vs Class
+- Need to create person struct with two properties
+  - name
+  - age
+- Create following classes
+  - Student
+  - Employee
+## Methods with struct
+  - attach methods with student like
+    - mark attendance
+    - attenda class
+    - study
+  - attach methods with Employee
+    - meeting()
+    - doAssignedWork
+    - discussion
+ Try to incorporate your knowledge of functions and apply with methods and struct
+
+## Interfaces
+
+
+## Dependency Injection
