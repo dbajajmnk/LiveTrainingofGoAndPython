@@ -48,5 +48,4 @@ Day 10
     - language info
   - Dry
   - KIS
-  - Scalability
-## Dependency Injection
+  - Scalability## Dependency Injection                                               
