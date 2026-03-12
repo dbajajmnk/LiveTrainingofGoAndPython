@@ -1,21 +1,21 @@
-package main
+// package main
 
-import "fmt"
+// import "fmt"
 
-func counter() func() int {
-	count := 0
-	return func() int {
-		count++
-		return count
-	}
+// func counter() func() int {
+// 	count := 0
+// 	return func() int {
+// 		count++
+// 		return count
+// 	}
 
-}
+// }
 
-func main() {
-	c := counter()
-	fmt.Println(c())
-	fmt.Println(c())
-	fmt.Println(c())
-	fmt.Println(c())
-	fmt.Println(c())
-}
+// func main() {
+// 	c := counter()
+// 	fmt.Println(c())
+// 	fmt.Println(c())
+// 	fmt.Println(c())
+// 	fmt.Println(c())
+// 	fmt.Println(c())
+// }
