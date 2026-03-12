@@ -64,4 +64,9 @@ func main() {
 	slice2 = append(slice2, 7)
 	fmt.Println(slice2)
 
+	complexNumber := complex(3, 4) //2,4i
+	fmt.Println("Complex", complexNumber)
+	fmt.Println("Real", real(complexNumber))
+	fmt.Println("Imaginary Number", imag(complexNumber))
+
 }
