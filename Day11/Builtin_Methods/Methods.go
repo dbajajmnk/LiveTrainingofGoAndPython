@@ -28,19 +28,40 @@ func main() {
 	// // my_map1["Anuj"] = 22
 	// fmt.Println(&my_map1)
 
-	arr := [3]int{1, 2, 3}
+	// arr := [3]int{1, 2, 3}
 
-	slice := arr[:]
-	fmt.Println(min(arr))
-	fmt.Println(max(arr))
+	// slice := arr[:]
+	// fmt.Println(min(slice))
+	// fmt.Println(max(arr))
 
-	fmt.Println(min(1, 2, 3, 4, 5))
-	fmt.Println(max(1, 2, 3, 4, 5))
+	// fmt.Println(min(1, 2, 3, 4, 5))
+	// fmt.Println(max(1, 2, 3, 4, 5))
 
-	fmt.Println(min("1", "2", "3"))
-	fmt.Println(max("1", "2", "3"))
+	// fmt.Println(min("1", "2", "3"))
+	// fmt.Println(max("1", "2", "3"))
 
-	fmt.Println(min("Avichal", "Anuj", "Deepak"))
-	fmt.Println(max("Avichal", "Anuj", "Deepak"))
+	// fmt.Println(min("Avichal", "Anuj", "Deepak"))
+	// fmt.Println(max("Avichal", "Anuj", "Deepak"))
+
+	// Student := map[string]int{
+	// 	"Anuj":   90,
+	// 	"Ansari": 150,
+	// }
+	// // delete(Student, "Ansari")
+	// Survivers:=map[string]int{
+
+	// }
+	slice1 := []int{1, 2, 3, 4, 5}
+	// var slice3 []int
+	slice2 := make([]int, len(slice1))
+
+	copy(slice2, slice1)
+
+	fmt.Println(slice1)
+	fmt.Println("after copying we got slice 2: ")
+	fmt.Println(slice2)
+	fmt.Println("after copying appending to slice 2: ")
+	slice2 = append(slice2, 7)
+	fmt.Println(slice2)
 
 }
