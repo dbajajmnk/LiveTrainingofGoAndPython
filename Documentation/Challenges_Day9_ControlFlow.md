@@ -48,4 +48,52 @@ Day 10
     - language info
   - Dry
   - KIS
-  - Scalability## Dependency Injection                                               
+  - Scalability## Dependency Injection    
+
+## Day 11
+### Collection
+- Array
+- Slice
+- Map
+### Build in Functions
+- make
+- build
+- new
+- append
+- copy
+- delete
+- len
+- cap
+- print
+- panic
+- recovery
+- printf
+### Error Handling Pattern
+- Chaining
+- Simple
+- Using Struct for Formatting
+### Recovery and Panic
+- Recovery
+- Panic
+### Comparison of Exceptions Go Vs Java
+- Simple code of Java
+- Same Code in Go
+
+### Assigments for Practice 
+- Collection
+  - Print the Array,Sort Filter
+  - Same with Slice but not perform Crud operations
+  - Map CRUD operation
+- Build Methods
+  - Create Slice and Map with make
+  - Add items with append for Slice
+  - Try to use another methods
+- Error Handling Pattern
+  - Try Chain pattern for Signup,Login and forot 
+  - Simple Error 
+- Panic and Recovery
+  - Show case your learning in your Signup, Login and forgot
+- Comparison 
+  - Your Call
+
+
