@@ -57,8 +57,9 @@ Day 10
 - Map
 ### Build in Functions
 - make
-- build
 - new
+- min
+- max
 - append
 - copy
 - delete
