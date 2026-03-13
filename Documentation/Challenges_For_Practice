@@ -106,8 +106,9 @@ Day 10
   - Go routine for simulating API Ca
   - Go rountine for sum of array or range
 - Channel
-  - Try with Different Data types
-  - We need to try by chaning the reciever and sender
-  - Need to implement Producer and consumber
+  - Try with Different Data types Done
+  - We need to try by chaning the reciever and sender Done
+  - Need to implement Producer and consumber Done
   - Job and Result 
   - Upto you Extra things
+  - FAN Out
