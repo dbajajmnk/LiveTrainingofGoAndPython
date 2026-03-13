@@ -43,13 +43,13 @@ func (channelHandler ChannelHandler) fillData(data []any) {
 }
 
 func (channelHandler ChannelHandler) getDataFromChannel() any {
-		for i := range channelHandler.dataSize {
+	for i := range channelHandler.dataSize {
 		fmt.Println(i)
-		channelHandler.data[i]=<-channelHandler.channel
+		channelHandler.data[i] = <-channelHandler.channel
 	}
 	return channelHandler.data
 }
-		
+
 func main() {
 	// go firstProgramforGoroutine()
 	// time.Sleep(3 * time.Second)
@@ -57,14 +57,15 @@ func main() {
 	channelHandler := ChannelHandler{}
 
 	channelOne := channelHandler.createBufferedChannel(2)
-	fmt.Println(cap(channelOne))
-	inputData:= []any{10,20}
+	//fmt.Println(cap(channelOne))
+	inputData := []any{10, 20}
 	channelHandler.fillData(inputData)
-	fmt.Println(cap(channelOne), len(channelOne))
+	//fmt.Println(cap(channelOne), len(channelOne))
 	time.Sleep(3 * time.Second)
 
 	fmt.Println("Main Exists")
-
+	channelData := channelHandler.getDataFromChannel()
+	fmt.Println("ChannelData",channelData)
 	value := <-channelOne
 	fmt.Println(value)
 	value1 := <-channelOne
