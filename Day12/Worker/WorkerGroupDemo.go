@@ -14,7 +14,7 @@ func main(){
 	var wg sync.WaitGroup
 	for i:=range(5){
 		wg.Add(1)
-	go addWorkder(i,&wg)
+	go addWorker(i,&wg)
 	}
 	wg.Wait()
 	fmt.Println("All Workers done there tasks")
