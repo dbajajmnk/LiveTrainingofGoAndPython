@@ -97,4 +97,18 @@ Day 10
 - Comparison 
   - Your Call
 
-
+## Day 12
+- Go rountine
+  - Simple Go routine without sleep and check the behaviour
+  - Go routine with sleep 
+  - Go routine with Loop for worker
+  - Go routine to print number as per user choice
+  - Go routine for simulating API Ca
+  - Go rountine for sum of array or range
+- Channel
+  - Try with Different Data types Done
+  - We need to try by chaning the reciever and sender Done
+  - Need to implement Producer and consumber Done
+  - Job and Result 
+  - Upto you Extra things
+  - FAN Out
