@@ -14,38 +14,26 @@ n("examples.txt")
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 )
 
 func main() {
 
-	// txtFile, err := os.Create("examples.txt")
-
-	// data, errReading := os.ReadFile("examples.txt")
-
-	// if errReading != nil {
-	// 	fmt.Println("Sorry unable to open file or Create File")
-	// } else {
-
-	// 	fmt.Println(string(data))
-	// }
-
-	AppendData("examples.txt", "Appending we are trying from Go")
-
-	deleteFileMsg, err := DeleteFile("examples.txt")
+	file, err := os.Open("data.txt")
 	if err != nil {
-		fmt.Println("Error", err)
-	} else {
-		fmt.Println(deleteFileMsg)
+		fmt.Println(err)
+		return
 	}
 
-	// if err != nil {
-	// 	fmt.Println("Sorry unable to open file or Create File")
-	// } else {
-	// 	txtFile.WriteString("Hello Avichal Trim Question\n")
-	// 	defer txtFile.Close()
-	// }
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
+	}
 
 }
 
@@ -64,6 +52,8 @@ func readFile(fileName string) (string, error) {
 
 	return string(data), errReading
 }
+
+
 
 func AppendData(fileName string, data string) (os.File, error) {
 	txtfile, errReading := os.OpenFile(fileName, os.O_APPEND|os.O_WRONLY, 0664)
