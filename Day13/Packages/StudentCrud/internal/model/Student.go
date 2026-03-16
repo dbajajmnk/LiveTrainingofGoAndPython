@@ -1,9 +1,9 @@
 package model
 
-import (
-	"fmt"
-)
-
-func StudentStruct() {
-	fmt.Println("I am from Model Folder")
+type Student struct {
+	ID    int
+	Name  string
+	Email string
+	Age   int
+	Phone string
 }
