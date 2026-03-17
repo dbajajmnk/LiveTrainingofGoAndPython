@@ -8,11 +8,10 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"gorm.io/driver/sqlite"
+	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 )
 
-// Product is the database model
 type Product struct {
 	ID    uint    `json:"id" gorm:"primaryKey"`
 	Name  string  `json:"name"`
@@ -20,7 +19,6 @@ type Product struct {
 	Stock int     `json:"stock"`
 }
 
-// ProductRequest is used for both create and update
 type ProductRequest struct {
 	Name  string  `json:"name"`
 	Price float64 `json:"price"`
@@ -28,28 +26,23 @@ type ProductRequest struct {
 }
 
 func main() {
-	// Gin router
 	r := gin.Default()
 
-	// Open SQLite database
 	db, err := gorm.Open(sqlite.Open("products.db"), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("failed to connect database: %v", err)
 	}
 
-	// Create table if not exists
 	if err := db.AutoMigrate(&Product{}); err != nil {
 		log.Fatalf("failed to migrate database: %v", err)
 	}
 
-	// Home route
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "Gin + GORM + SQLite CRUD API is running",
 		})
 	})
 
-	// CREATE
 	r.POST("/products", func(c *gin.Context) {
 		var req ProductRequest
 
@@ -86,7 +79,6 @@ func main() {
 		})
 	})
 
-	// READ ALL
 	r.GET("/products", func(c *gin.Context) {
 		var products []Product
 
@@ -103,7 +95,6 @@ func main() {
 		})
 	})
 
-	// READ ONE
 	r.GET("/products/:id", func(c *gin.Context) {
 		productID, ok := parseID(c)
 		if !ok {
@@ -131,7 +122,6 @@ func main() {
 		})
 	})
 
-	// UPDATE
 	r.PUT("/products/:id", func(c *gin.Context) {
 		productID, ok := parseID(c)
 		if !ok {
@@ -185,7 +175,6 @@ func main() {
 		})
 	})
 
-	// DELETE
 	r.DELETE("/products/:id", func(c *gin.Context) {
 		productID, ok := parseID(c)
 		if !ok {
@@ -219,13 +208,11 @@ func main() {
 		})
 	})
 
-	// Start server
 	if err := r.Run(":8080"); err != nil {
 		log.Fatalf("failed to start server: %v", err)
 	}
 }
 
-// parseID converts path param to int
 func parseID(c *gin.Context) (int, bool) {
 	id := c.Param("id")
 
@@ -240,7 +227,6 @@ func parseID(c *gin.Context) (int, bool) {
 	return productID, true
 }
 
-// validate request body
 func validateProductRequest(req ProductRequest) error {
 	if strings.TrimSpace(req.Name) == "" {
 		return errors.New("name is required")
