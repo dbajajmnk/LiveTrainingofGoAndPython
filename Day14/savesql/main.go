@@ -25,10 +25,14 @@ type ProductRequest struct {
 	Stock int     `json:"stock"`
 }
 
+func db_connection(fileName string) (db *gorm.DB, err error) {
+	sqliteDb := sqlite.Open(fileName)
+	return gorm.Open(sqliteDb, &gorm.Config{})
+}
+
 func main() {
 	r := gin.Default()
-
-	db, err := gorm.Open(sqlite.Open("products.db"), &gorm.Config{})
+	db, err := db_connection("produtds.db")
 	if err != nil {
 		log.Fatalf("failed to connect database: %v", err)
 	}
