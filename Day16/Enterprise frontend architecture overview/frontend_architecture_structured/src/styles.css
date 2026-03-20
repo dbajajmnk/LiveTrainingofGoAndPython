@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #222;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+.input {
+  flex: 1;
+  min-width: 220px;
+  padding: 10px 12px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+}
+
+.button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #111827;
+  color: #fff;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.price {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.muted {
+  color: #666;
+}
+
+.error {
+  color: #b00020;
+  background: #fdecec;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #f3c2c2;
+  margin-bottom: 16px;
+}
+
+.loader {
+  padding: 12px 0;
+  font-weight: bold;
+}

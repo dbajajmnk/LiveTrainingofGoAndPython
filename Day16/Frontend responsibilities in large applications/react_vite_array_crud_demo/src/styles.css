@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 32px 16px;
+}
+
+.container-card {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.concept-box {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  border-radius: 12px;
+  padding: 14px;
+  margin: 18px 0;
+}
+
+.form-card,
+.list-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px;
+  margin-top: 20px;
+  background: #f8fafc;
+}
+
+.field-group {
+  margin-bottom: 14px;
+}
+
+.field-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button.secondary {
+  background: #475569;
+}
+
+.button.danger {
+  background: #b91c1c;
+}
+
+.button.small {
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.student-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.student-card h3 {
+  margin-top: 0;
+}
+
+.muted {
+  color: #64748b;
+}
