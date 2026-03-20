@@ -7,17 +7,23 @@ import { useState } from 'react';
 
 
 function App(){
-  
-  const styles = ["odd","even"];
+
+ 
+}
+export default App
+
+
+
+
+
+function dynamicStylingwithFunction(){
+   const styles = ["odd","even"];
   const clickHander=()=>{
      selectedStyle=="odd" ? setSelectedStyle(styles[1]) :setSelectedStyle(styles[0])
   }
   let [selectedStyle,setSelectedStyle] = useState(styles[0])
   return <div className={selectedStyle} onClick={clickHander}></div>
 }
-export default App
-
-
 function conditionalStyling(){
     let conditionStyling = index%2==0 ? 'even' : "odd";
       const litag= <li key={index} className={conditionStyling}>{value}</li>
