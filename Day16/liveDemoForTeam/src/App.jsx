@@ -1,28 +1,28 @@
 import { CourseCard } from './Features/Course/Course';
 import CourseList from './Features/Course/CourseList';
+import "./App.css"
+import { useState } from 'react';
+
 
 
 
 function App(){
-  const fruits = ["Apple","Banana","Mango","Papaya","Kiwi"];
-  const  listUI=[];
-  fruits.forEach((value,index)=>{
-      const litag= <li key={index}>{value}</li>
-      listUI[index]=litag
-  })
-
-// const courseList=[{title:"Java",discount:10,duration:"2 Months",price:1500},
-//   {title:"Java",discount:10,duration:"2 Months",price:1500},
-//   {title:"Java",discount:10,duration:"2 Months",price:1500},
-//   {title:"Java",discount:10,duration:"2 Months",price:1500},
-//   {title:"Java",discount:10,duration:"2 Months",price:1500},
-// ]
-
-// return <CourseList items={courseList}></CourseList>
-  return <ol>{listUI}</ol>
+  
+  const styles = ["odd","even"];
+  const clickHander=()=>{
+     selectedStyle=="odd" ? setSelectedStyle(styles[1]) :setSelectedStyle(styles[0])
+  }
+  let [selectedStyle,setSelectedStyle] = useState(styles[0])
+  return <div className={selectedStyle} onClick={clickHander}></div>
 }
 export default App
 
+
+function conditionalStyling(){
+    let conditionStyling = index%2==0 ? 'even' : "odd";
+      const litag= <li key={index} className={conditionStyling}>{value}</li>
+      listUI[index]=litag
+  }
 
 function ListDemo()
 {

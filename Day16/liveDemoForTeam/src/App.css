@@ -1,3 +1,14 @@
+.even{
+  background: green;
+  width: 500px;
+  height: 500px;
+}
+.odd{
+  background: red;
+  width: 200px;
+  height: 200px;
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
