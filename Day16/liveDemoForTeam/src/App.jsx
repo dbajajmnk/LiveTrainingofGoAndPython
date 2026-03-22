@@ -2,13 +2,40 @@ import { CourseCard } from './Features/Course/Course';
 import CourseList from './Features/Course/CourseList';
 import "./App.css"
 import { useState } from 'react';
+import ProductForm from './Features/Course/CourseForm';
 
+let [courseTitle,setTitle]= useState("") 
+let [courseDuration,setDuraiton]= useState("") 
+let [coursePirce,setPrice]= useState("") 
+let [discount,setDiscount]= useState("") 
 
+const handler1=(e)=>{
+  console.log(e.value);
+  setTitle(e.value)
 
+}
+const handler2=(e)=>{
+console.log(e.value);
+setDiscount(e.value)
+}
+const handler3=(e)=>{
+  console.log(e.value);
+  setPrice(e.value);
+}
+const handler4=(e)=>{
+  console.log(e.value);
+  setDuraiton(e.value)
+  
+}
+const handler5=(e)=>{
+  console.log(e.value);
+  
+}
 
 function App(){
 
- 
+  return <ProductForm handlers={[handler1,handler2,handler3,handler4,handler5]} 
+  values={[courseTitle,courseDuration,coursePirce,discount]}></ProductForm> 
 }
 export default App
 
