@@ -10,7 +10,7 @@ Here’s your **deep dive on ARIA roles & accessibility standards** using your e
 
 ### What is ARIA?
 
-**ARIA (Accessible Rich Internet Applications)** is a set of attributes that make web content more accessible, especially for users relying on assistive technologies.
+**ARIA (Accessible Rich Internet Applications)** is a set of attributes that make web content moree accessible, especially for users relying on assistive technologies.
 
 Defined by World Wide Web Consortium under the Web Content Accessibility Guidelines.
 
