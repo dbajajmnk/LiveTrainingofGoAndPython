@@ -462,7 +462,10 @@ Instead of screen size → use container size.
 
 # 16) Interview explanation
 
-> Responsive design is an approach to building web applications that adapt to different screen sizes using flexible layouts, media queries, and scalable units. It ensures a consistent user experience across devices like mobile, tablet, and desktop.
+> Responsive design is an approach to building web applications that adapt to different screen sizes 
+> using flexible layouts, media queries, and scalable units. It ensures a consistent user experience
+>  across devices 
+like mobile, tablet, and desktop.
 
 ---
 
@@ -518,12 +521,12 @@ Instead of screen size → use container size.
 
 ---
 
-1. Build responsive navbar
-2. Create responsive card grid
-3. Convert desktop layout → mobile layout
-4. Implement hamburger menu
-5. Build dashboard layout
-6. Use container queries
+1. Build responsive navbar (Navya)
+2. Create responsive card grid (Shinchana)
+3. Convert desktop layout → mobile layout (Lidiya)
+4. Implement hamburger menu (Krishna)
+5. Build dashboard layout (Avichal)
+6. Use container queries (Piyush)
 
 ---
 

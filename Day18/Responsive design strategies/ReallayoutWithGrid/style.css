@@ -1,0 +1,10 @@
+body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+div {
+  flex: 1 1 100px;
+  background-color: red;
+}

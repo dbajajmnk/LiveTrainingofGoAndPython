@@ -1,0 +1,52 @@
+.container{
+    width:100%;
+    max-width: 1200px;
+}
+img{
+    width: 100%;
+    height:auto;
+}
+body{
+    background: red;
+}
+p{
+    font-size: 1em;
+}
+@media (max-width: 768px) {
+  body {
+    background: lightgray;
+  }
+  img{
+    width: 50vw;
+    height:50vh;
+  }
+}
+@media (max-width: 480px){
+  body {
+    background: purple;
+  }
+  img{
+    width: 50vw;
+    height:50vh;
+  }
+  
+}
+@media (min-width: 1024px){
+     body {
+    background:blue;
+  }
+  img{
+    width: 50vw;
+    height:50vh;
+  }
+}
+@media (min-width: 1025px){
+    body {
+    background:silver;
+  }
+  img{
+    width: 50vw;
+    height:50vh;
+  }
+
+}
