@@ -1,0 +1,38 @@
+/* .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap:200px
+
+}
+.item {
+  grid-column: span 2;
+} */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.box {
+    background-color:gray;
+  
+}
+.sidebar {
+  
+  height: 100px;
+    width: 100px;
+    background-color: red;
+  
+}
+.content {
+     height: 100px;
+    width: 100px;
+
+   background-color: black;
+  
+}
+.footer {
+     height: 100px;
+    width: 100px;
+ background-color: purple;
+  
+  
+}

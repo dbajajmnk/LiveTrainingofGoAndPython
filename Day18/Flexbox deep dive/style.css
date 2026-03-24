@@ -1,0 +1,39 @@
+.box {
+    width: 20px;
+    height: 20px;
+    flex-grow: 1;
+    background-color: green;
+}
+.box1 {
+    width: 20px;
+    height: 20px;
+    flex-grow: 1;
+    background-color: red;
+}
+.box2 {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+}
+.box3 {
+    width: 20px;
+    height: 20px;
+    background-color: purple;
+}
+.containerdispaly{
+display: flex;
+flex-direction: row-reverse;
+   flex-wrap: wrap;
+    justify-content:end;
+    align-items:flex-end;
+}
+.container {
+  display: flex;
+  background-color: purple;
+  
+}
+
+
+
+
+ 

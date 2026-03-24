@@ -274,7 +274,7 @@ justify-items: center;
 
 ---
 
-## 10.2 `align-items` (vertical inside cell)
+## 10.2 `align-items` (vertical inside cell) Need to Check
 
 ```css
 align-items: center;
@@ -282,7 +282,7 @@ align-items: center;
 
 ---
 
-## 10.3 `place-items` (shortcut)
+## 10.3 `place-items` (shortcut) Need to check
 
 ```css
 place-items: center;
@@ -506,12 +506,12 @@ If asked:
 
 # 21) Practice tasks
 
-1. Create 3-column layout
-2. Build a dashboard layout
-3. Create responsive card grid
-4. Build blog layout (sidebar + content)
-5. Create gallery using Grid
-6. Try auto-fit + minmax
+1. Create 3-column layout (Ansari)
+2. Build a dashboard layout (Avichal)
+3. Create responsive card grid (Krishan)
+4. Build blog layout (sidebar + content) (Anuj)
+5. Create gallery using Grid (Bhargvi)
+6. Try auto-fit + minmax (Kusuma)
 
 ---
 
