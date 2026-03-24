@@ -1,4 +1,5 @@
-Here’s a **deep dive into CSS Performance Considerations**—focused on real-world frontend engineering, optimization, and interview readiness.
+Here’s a **deep dive into CSS Performance Considerations**—focused on real-world frontend engineering, 
+optimization, and interview readiness.
 
 ---
 
@@ -499,7 +500,8 @@ font-display: swap;
 
 # 23) Interview explanation
 
-> CSS performance refers to optimizing styles so that the browser can render pages quickly and efficiently. It involves minimizing CSS size, avoiding expensive properties, reducing reflows, and using GPU-accelerated properties like transform and opacity for animations.
+> CSS performance refers to optimizing styles so that the browser can render pages quickly and efficiently. It involves minimizing CSS size, avoiding expensive properties, reducing reflows, and using GPU-accelerated
+>  properties like transform and opacity for animations.
 
 ---
 

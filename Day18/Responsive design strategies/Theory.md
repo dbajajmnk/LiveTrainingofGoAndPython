@@ -516,6 +516,10 @@ like mobile, tablet, and desktop.
 > Design flexible, not fixed.
 
 ---
+Event loop
+Microtasks vs macrotasks
+Promise internals
+async await execution flow
 
 # 20) Practice tasks
 
@@ -530,6 +534,8 @@ like mobile, tablet, and desktop.
 
 ---
 
+
+
 # 21) Quick comparison
 
 | Technique         | Purpose                        |
@@ -540,5 +546,6 @@ like mobile, tablet, and desktop.
 | Container Queries | Component-based responsiveness |
 
 ---
+
 
 
