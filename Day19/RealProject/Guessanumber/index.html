@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess a Number</title>
+</head>
+<body>
+     <h1 id="randomNumber"></h1>
+    <form>
+        <input type="text" hint="Enter a Number" id="userguess"/>
+        <input type="button" id="try">Guess a Number</input>
+    </form>
+    <h1 id="status"></h1>
+</body>
+<script>
+    let randomNum = document.getElementById("randomNumber");
+    let userguess = document.getElementById("userguess");
+    let tryButotn = document.getElementById("try");
+    let status = document.getElementById("status");
+
+    function clearScreen(){
+        randomNum.innerHTML="";
+        userguess.value="";
+        status.innerHTML=""
+
+    }
+    tryButotn.addEventListener("click",(e)=>{
+        e.preventDefault();
+        playGame();
+       
+
+    
+        
+    })
+
+    function playGame(){
+         let userGuess = parseInt(userguess.value);
+        let randomN= Math.floor(Math.random()*20);
+        randomNum.innerHTML=`${randomN}`
+        if(randomN ===userGuess)
+        {
+            status.innerHTML="Wow! Your Guess is Right"
+        }
+        else {
+      
+        
+        
+            let difference = randomN-userGuess;
+            console.log("Difference",difference);
+         
+            status.innerHTML=`Sorry! Best of luck for next time`
+        }
+    }
+
+    
+</script>
+</html>
