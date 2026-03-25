@@ -1,0 +1,21 @@
+{
+  "name": "hoisting-and-temporal-dead-zone",
+  "version": "1.0.0",
+  "description": "Sanple demo",
+  "keywords": [
+    "sample",
+    "javascript",
+    "program"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "no"
+  },
+  "license": "UNLICENSED",
+  "author": "\"Deepak\"",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  }
+}
