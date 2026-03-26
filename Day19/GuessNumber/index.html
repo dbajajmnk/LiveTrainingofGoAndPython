@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="userguess" placeholder="Enter a Number">
+        <input type="button" id="try" value="Guess a Number">
+    </form>
+    <h1 id="status"></h1>
+
+    <script>
+        let randomNum = Math.floor(Math.random() * 20) + 1;
+        let userguess = document.getElementById("userguess");
+        let tryButton = document.getElementById("try");
+        let status = document.getElementById("status");
+
+        tryButton.addEventListener("click", function() {
+            let userGuess = Number(userguess.value);
+
+            if (userGuess == randomNum) {
+                status.innerText = "You Won!";
+            } else if (userGuess > randomNum) {
+                status.innerText = "Too High";
+            } else {
+                status.innerText = "Too Low";
+            }
+        })
+    </script>
+</body>
+</html>
