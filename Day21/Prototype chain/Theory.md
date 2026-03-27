@@ -382,6 +382,8 @@ This is where prototype chain becomes very important.
 ```javascript
 function User(name) {
   this.name = name;
+  this.eat=(){}
+
 }
 
 User.prototype.sayHello = function () {
