@@ -1,7 +1,3 @@
-Absolutely — here is **Critical Rendering Path** in the same **beginner-friendly, step-by-step** style.
-
----
-
 # Critical Rendering Path
 
 ## 1) What is Critical Rendering Path?
