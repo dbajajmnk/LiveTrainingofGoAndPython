@@ -1,7 +1,3 @@
-Absolutely — here is **Event Loop in JavaScript** in the same **beginner-friendly, step-by-step** style.
-
----
-
 # JavaScript Event Loop
 
 ## 1) What is Event Loop?

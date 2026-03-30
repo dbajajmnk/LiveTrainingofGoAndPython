@@ -1,11 +1,3 @@
-Perfect — now we’ll do **`async / await` execution flow** in the same **deep, structured, beginner → engineering → interview level format**.
-
-This is where everything connects:
-
-👉 **Promises + Microtasks + Event Loop + Execution Flow**
-
----
-
 # JavaScript `async / await` Execution Flow
 
 ---
