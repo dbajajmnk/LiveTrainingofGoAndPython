@@ -1,11 +1,5 @@
-Perfect — this is the **next level clarity topic after Event Loop**, and once you understand this properly, **async behavior becomes crystal clear**.
-
----
-
 # Microtasks vs Macrotasks (JavaScript)
-
 ---
-
 # 1) What are Microtasks and Macrotasks?
 
 In JavaScript async execution, tasks are divided into **two main queues**:
