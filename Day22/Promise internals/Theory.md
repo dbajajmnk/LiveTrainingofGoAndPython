@@ -1,5 +1,3 @@
-Perfect — now we go **deep into Promise Internals** in the same **engineering-first + beginner-friendly structured format** you’ve locked.
-
 This is one of the most important topics for **interviews + real systems**.
 
 ---
