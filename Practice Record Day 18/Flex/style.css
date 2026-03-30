@@ -1,0 +1,44 @@
+
+.box1{
+    height: 100px;
+    width: 100px;
+    background-color: rgb(223, 18, 18);
+}
+.box2{
+    height: 100px;
+    width: 100px;   
+    background-color: rgb(21, 180, 233);
+}
+.box3{
+    height: 100px;
+    width: 100px;
+    background-color: rgb(26, 230, 60);
+}
+.box4{
+    height: 100px;
+    width: 100px;
+    background-color: rgb(226, 37, 243);
+}
+.box5 {
+    height: 100px;
+    width: 100px;
+    background-color: rgb(241, 190, 78);
+}
+
+.containerdisplay{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: flex-end;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    /* width: 100%;
+    gap: 100px;
+    height: 400px; */
+}
+
+
+

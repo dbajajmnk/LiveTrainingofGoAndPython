@@ -1,0 +1,219 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head> -->
+<!-- <body>
+
+<div class="container"> -->
+
+    <!-- Sidebar -->
+    <!-- <aside class="sidebar">
+        <h2 class="logo">Dashboard</h2>
+        <ul class="menu">
+            <li class="active">🏠 Home</li>
+            <li>📊 Analytics</li>
+            <li>📁 Projects</li>
+            <li>👥 Users</li>
+            <li>⚙️ Settings</li>
+        </ul>
+    </aside> -->
+
+    <!-- Main Content -->
+    <!-- <main class="main"> -->
+
+        <!-- Topbar -->
+        <!-- <header class="topbar">
+            <h1>Welcome Back</h1>
+            <div class="profile">👤 Admin</div>
+        </header> -->
+
+        <!-- Cards -->
+        <!-- <section class="cards">
+            <div class="card">
+                <h3>Revenue</h3>
+                <p>₹1,20,000</p>
+            </div>
+            <div class="card">
+                <h3>Users</h3>
+                <p>1,250</p>
+            </div>
+            <div class="card">
+                <h3>Orders</h3>
+                <p>320</p>
+            </div>
+            <div class="card">
+                <h3>Growth</h3>
+                <p>+12%</p>
+            </div>
+        </section> -->
+
+        <!-- Table -->
+        <!-- <section class="table-section">
+            <h2>Recent Transactions</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#001</td>
+                        <td>Avichal</td>
+                        <td>₹5000</td>
+                        <td class="success">Completed</td>
+                    </tr>
+                    <tr>
+                        <td>#002</td>
+                        <td>Rahul</td>
+                        <td>₹2500</td>
+                        <td class="pending">Pending</td>
+                    </tr>
+                    <tr>
+                        <td>#003</td>
+                        <td>Neha</td>
+                        <td>₹7000</td>
+                        <td class="failed">Failed</td>
+                    </tr>
+                    <tr>
+                        <td>#004</td>
+                        <td>Rust</td>
+                        <td>₹0</td>
+                        <td class="failed">Not Rich Enough</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+</div> -->
+
+<!-- </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="d-flex">
+
+    <!-- Sidebar -->
+    <div class="sidebar p-3">
+        <h4 class="text-white">Dashboard</h4>
+        <ul class="nav flex-column mt-4">
+            <li class="nav-item"><a class="nav-link active" href="#">🏠 Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">📊 Analytics</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">📁 Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">👥 Users</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">⚙️ Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content flex-grow-1 p-4">
+
+        <!-- Topbar -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Welcome Back</h2>
+            <div class="fw-bold">👤 Admin</div>
+        </div>
+
+        <!-- Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-3">
+                <div class="card shadow-sm p-3">
+                    <h5>Revenue</h5>
+                    <h3>₹1,20,000</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm p-3">
+                    <h5>Users</h5>
+                    <h3>1,250</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm p-3">
+                    <h5>Orders</h5>
+                    <h3>320</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card shadow-sm p-3">
+                    <h5>Growth</h5>
+                    <h3 class="text-success">+12%</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="card shadow-sm p-3">
+            <h4>Recent Transactions</h4>
+            <div class="table-responsive">
+                <table class="table table-hover mt-3">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>User</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#001</td>
+                            <td>Avichal</td>
+                            <td>₹5000</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>#002</td>
+                            <td>Rahul</td>
+                            <td>₹2500</td>
+                            <td><span class="badge bg-warning text-dark">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>#003</td>
+                            <td>Neha</td>
+                            <td>₹7000</td>
+                            <td><span class="badge bg-danger">Get a job</span></td>
+                        </tr>
+                        <tr>
+                            <td>#004</td>
+                            <td>Rust</td>
+                            <td>₹0</td>
+                            <td><span class="badge bg-danger">Not Rich Enough</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

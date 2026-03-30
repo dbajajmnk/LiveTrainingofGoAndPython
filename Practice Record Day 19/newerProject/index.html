@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Game</title>
+</head>
+<body>
+
+    <h1 id="randomNumber"></h1>
+
+    <form>
+        <input type="text" placeholder="Enter a number" id="usersguess">
+        <input type="button" id="try" value="Guess a Number">
+    </form>
+
+    <h1 id="statusMsg"></h1>
+
+</body>
+
+<script>
+    let randomNumDisplay = document.getElementById("randomNumber");
+    let userguess = document.getElementById("usersguess");
+    let tryButton = document.getElementById("try");
+    let statusMsg = document.getElementById("statusMsg");
+
+    // Generate random number ONCE
+    let randomNum = Math.floor(Math.random() * 100) + 1;
+    console.log("Random Number:", randomNum); // for testing
+
+    tryButton.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        let userGuess = Number(userguess.value);
+
+        if (!userGuess) {
+            statusMsg.innerText = "Please enter a valid number!";
+        } else if (userGuess === randomNum) {
+            statusMsg.innerText = "🎉 Correct Guess!";
+            randomNumDisplay.innerText = "Number was: " + randomNum;
+        } else if (userGuess > randomNum) {
+            statusMsg.innerText = "Too High!";
+        } else {
+            statusMsg.innerText = "Too Low!";
+        }
+    });
+</script>
+
+</html>

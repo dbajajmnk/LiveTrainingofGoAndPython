@@ -1,0 +1,18 @@
+ div {
+            width: 100px;
+            height: 100px;
+            background-color: magenta;
+            border: 1px solid #ccc;
+        }
+.container {
+    width: 200px;
+    height: 200px;
+    background-color: lightblue;
+    border: 1px solid #ccc;
+}
+#one {
+    width: 150px;
+    height: 150px;
+    background-color: lightgreen;
+    border: 1px solid #ccc;
+}
