@@ -32,6 +32,21 @@ const addElements=(type,elements)=>{
 
 
 }
+
+
 repaintOnly();
 reflowTrigger();
-addElements("ol",["Abhi","Raj","Kusuma","Lidiya","Piyush","Navya","Rohit"])
+addElements("ul",["Abhi","Raj","Kusuma","Lidiya","Piyush","Navya","Rohit"])
+document.body.appendChild((()=>{
+    let btn=document.createElement("button");
+    let box=document.getElementById("box");
+    btn.textContent="Click Me";
+    btn.addEventListener("click",(event)=>{
+        event.preventDefault();
+        const existingWidth = getComputedStyle(box).width;
+        box.style.width=parseInt(existingWidth.substring(0, existingWidth.length - 2))+200+"px";
+
+    })
+    return btn;
+})())
+
