@@ -11,6 +11,7 @@ const assingment4 = ()=>{
     return box;
 }
 
+
 const assignment1 = ()=>{
     const h1 = document.createElement("h1");
     h1.style.color='red';
@@ -33,10 +34,18 @@ const assignment3= ()=>{
     });
     return myButton;
 }
+const assignment5=()=>{
+    const box = document.querySelector("div");
+    const computedStyle = window.getComputedStyle(box);
+    console.log("Computed Width:", computedStyle.width);
+    console.log("Computed Background Color:", computedStyle.backgroundColor);
+}
+
 document.body.appendChild(assignment1());
 document.body.appendChild(assignmet2());
 document.body.appendChild(assingment4());
 document.body.appendChild(assignment3());
+assignment5();
 
 
 
