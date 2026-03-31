@@ -32,11 +32,27 @@ const addElements=(type,elements)=>{
 
 
 }
+const addElementsImprove=(type,elements)=>{
+    const list=document.createElement(type);
+    let children =[];
+    for(let i=0;i<elements.length;i++){
+        const listItem=document.createElement("li");
+        listItem.textContent = elements[i];
+        children.push(listItem);
+        
+    }
+    list.append(...children);
+    document.body.appendChild(list);
+    
+
+
+}
 
 
 repaintOnly();
 reflowTrigger();
-addElements("ul",["Abhi","Raj","Kusuma","Lidiya","Piyush","Navya","Rohit"])
+addElements("ul",["Abhi","Raj","Kusuma","Lidiya","Piyush","Navya","Rohit"]);
+addElementsImprove("ul",["Abhi","Raj","Kusuma","Lidiya","Piyush","Navya","Rohit"]);
 document.body.appendChild((()=>{
     let btn=document.createElement("button");
     let box=document.getElementById("box");

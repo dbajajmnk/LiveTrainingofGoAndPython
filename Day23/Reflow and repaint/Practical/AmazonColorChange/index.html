@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag</title>
+</head>
+<body>
+    
+</body>
+<script>
+   
+setTimeout(()=>{
+  changeflag(false);
+},3000)
+function changeflag(flag){
+    if(flag){
+        document.body.style.backgroundColor="red";
+        document.appendChild(document.createElement("h1")).innerText="Flag is Red";
+    }else{
+        document.body.style.backgroundColor="blue";
+        document.appendChild(document.createElement("h1")).innerText="Flag is Blue";
+    }
+}
+changeflag(true);
+
+</script>
+</html>
