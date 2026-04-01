@@ -1,7 +1,3 @@
-Perfect — now let’s move to **Caching Strategies** in the same **deep, structured, beginner → engineering → interview level format**.
-
----
-
 # Caching Strategies (Browser + Web Systems)
 
 ---
