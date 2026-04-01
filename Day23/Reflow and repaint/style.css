@@ -1,0 +1,7 @@
+#box{
+    background-color:red;
+    border:"solid 1px"
+}
+body{
+    display:flex;
+}

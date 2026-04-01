@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <h1>CSSOM AND DOM</h1>
+        <p>CSSOM (CSS Object Model) and DOM (Document Object Model) are two important...</p>
+    </div>
+</body>
+<script>
+    // Accessing the DOM
+    const box = document.getElementById('box');
+    console.log(box); // Logs the div element with id "box"
+
+    // Modifying the DOM
+    box.style.backgroundColor = 'lightblue'; // Changes the background color
+
+    // Accessing CSSOM
+    const computedStyle = window.getComputedStyle(box);
+    console.log(computedStyle.backgroundColor); // Logs the computed background color
+</script>
+
+</html>
