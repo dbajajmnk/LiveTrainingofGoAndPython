@@ -1,7 +1,3 @@
-Absolutely — let’s break down **Core Web Vitals** in the same **beginner → engineering → interview-ready structured format**.
-
----
-
 # Core Web Vitals (Browser Performance Metrics)
 
 ---
