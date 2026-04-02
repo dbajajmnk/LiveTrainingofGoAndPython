@@ -41,6 +41,11 @@
   - AI Tools : Gemini
   - Development Approach : TDD (Test Driven Development)
 - Special Instruction : We request to build by own you break down into step first think like product owner 
-
-
+- Team Structure :
+Front End : 
+Full Stack : 
+Database :
+Testing :
+OP : 
+Devops
 

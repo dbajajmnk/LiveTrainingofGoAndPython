@@ -1,7 +1,4 @@
-Absolutely — here is **Secure Frontend API Usage** in the same learning flow you’ve been building in this branch. It continues the same beginner-friendly, step-by-step pattern from your earlier frontend performance/security topics. 
-
 # Secure Frontend API Usage
-
 ## 1) What is Secure Frontend API Usage?
 
 Secure frontend API usage means:
