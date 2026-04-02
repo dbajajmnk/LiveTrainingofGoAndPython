@@ -1,7 +1,3 @@
-Perfect — now I’ll give you **CORS Fundamentals** strictly in your **locked template** (What → Why → When → How → Real-life → Engineering → Syntax → Use cases → Mistakes → Deep → MCQ → Subjective → Practice → Projects → Interview → Summary).
-
----
-
 # CORS (Cross-Origin Resource Sharing)
 
 ---

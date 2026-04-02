@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflect Xss</title>
+</head>
+<body>
+ <h1>Hello Friends</h1>
+</body>
+   <script>
+   const query = new URLSearchParams(window.location.search).get("q");
+   console.log(query);
+   document.body.innerHTML = query;
+</script>
+</html>
+<!----
+http://127.0.0.1:61016/Day25/Cross-site%20scripting%20(XSS)/ReflectXss.html?q=%3Cscript%3Ealert(%27Hacked%27)%3C/script%3E
+-->
