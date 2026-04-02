@@ -42,10 +42,15 @@
   - Development Approach : TDD (Test Driven Development)
 - Special Instruction : We request to build by own you break down into step first think like product owner 
 - Team Structure :
-Front End : 
-Full Stack : 
-Database :
-Testing :
-OP : 
-Devops
-
+Team Lead:- Avichal Tiwari (Architecture)
+Phase : Requirement Grooming (Functional requirement,non-functional requirement,Constraints,Sucess,Failure,Tools)
+Front End : Sinchina,Kusuma and Lidiya (WireFraming,Hi-Fi Design)
+Database  : Bargavi ,Navya (Entity Diagrams,Ralationship Diagrams,DFD) 
+Team of Backend Testing : Ansari (Developer)
+Backend   : Piyush,Krishna
+Testing   : Anuj, Sunny (Validation,Use cases,Assumption) ()
+OP (Optional)      : 
+Devops (Optional)  : 
+VS
+Cursor(AI)+Piyush+Krishna (1 Day) (Monday)
+I am your helper you need to come up to me for any help.
