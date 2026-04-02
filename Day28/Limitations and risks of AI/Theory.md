@@ -1,12 +1,3 @@
-Absolutely—here is **Limitations & Risks of AI** built using your **FINAL LOCKED MASTER TEMPLATE (V4 – ABSOLUTE)**
-
-✅ Python + OpenAI
-✅ Real-world code use cases
-✅ Debugging + Failure + System Design
-✅ Strict Q&A separation
-
----
-
 # 🧱 Limitations & Risks of AI (Python + OpenAI)
 
 ---

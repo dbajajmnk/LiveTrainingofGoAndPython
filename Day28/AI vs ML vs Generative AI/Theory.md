@@ -1,12 +1,3 @@
-Absolutely—here is **AI vs ML vs Generative AI** built using your **FINAL LOCKED MASTER TEMPLATE (V4 – ABSOLUTE)** with:
-
-✅ Python + OpenAI
-✅ Real-world code use cases (mandatory)
-✅ Debugging + Failure + System Design
-✅ Strict Q&A separation
-
----
-
 # 🧱 AI vs ML vs Generative AI (Python + OpenAI)
 
 ---
