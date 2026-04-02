@@ -52,5 +52,5 @@ Testing   : Anuj, Sunny (Validation,Use cases,Assumption) ()
 OP (Optional)      : 
 Devops (Optional)  : 
 VS
-Cursor(AI)+Piyush+Krishna (1 Day) (Monday)
+Cursor(AI)+Piyush+Krishna ( Day) (Monday)
 I am your helper you need to come up to me for any help.
