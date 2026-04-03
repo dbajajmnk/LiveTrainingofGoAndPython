@@ -1,4 +1,4 @@
-function Test(a,b){
+function addition(a,b){
     return a+b;
 }
 
@@ -8,12 +8,12 @@ const calulate=(a,b)=>{
 
 let result = calulate(10,50);
 
-const pi=9.10;
+const PI=9.10;
 
-let numbers = [10,20,"Deepak",true,""];
+let numbers = [10,20];
 
 
-function user(name,age){
+function User(name,age){
     this.name=name;
     this.age=age;
 }
