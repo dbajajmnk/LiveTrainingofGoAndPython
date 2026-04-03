@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Query Display</title>
+</head>
+<body>
+    <!-- The query content will be injected here -->
+    
+    <script>
+        // 1. Get the 'q' parameter from the URL (e.g., ?q=Hello)
+        const query = new URLSearchParams(window.location.search).get("q");
+
+        // 2. Inject it into the body
+        if (query) {
+            document.body.innerHTML = query;
+        } else {
+            document.body.innerHTML = "No query provided in the URL.";
+        }
+    </script>
+</body>
+</html>
+
+</body>
+</html>

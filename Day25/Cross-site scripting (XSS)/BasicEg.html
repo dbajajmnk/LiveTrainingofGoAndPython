@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="comments"></div>
+</body>
+
+
+<script>
+  const comment = "<script>alert('Hacked')<\/script>";
+  
+  // Use textContent to treat the string as plain text, not HTML
+  document.getElementById("comments").textContent = comment;
+</script>
+
+</html>

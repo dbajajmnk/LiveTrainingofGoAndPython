@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Danger Zone</title>
+</head>
+<body>
+    <div id="demo">Original Content</div>
+    <div id="box">Target Box</div>
+    <script>
+        const input = "<b>Hacked!</b> <img src=x onerror=alert('XSS')>";
+        document.getElementById("demo").innerHTML = input;
+        document.getElementById("box").outerHTML = "<span>Replaced Box</span>";
+        document.write("<p>Written by document.write</p>");
+        eval("console.log('Eval executed this')");
+        setTimeout("console.log('Timeout triggered')", 2000);
+        setInterval("console.log('Interval pulse')", 5000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Display</title>
+</head>
+<body>
+    <div id="app">Waiting for hash...</div>
+
+    <script>
+        // 1. Grab everything after the '#' in the URL
+        const hash = window.location.hash;
+
+        // 2. Inject it into the 'app' div (Vulnerable to XSS!)
+        if (hash) {
+            document.getElementById("app").innerHTML = decodeURIComponent(hash);
+        } else {
+            document.getElementById("app").innerHTML = "No hash found. Add #Something to the URL.";
+        }
+    </script>
+</body>
+</html>
