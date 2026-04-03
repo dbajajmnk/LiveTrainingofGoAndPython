@@ -45,42 +45,52 @@
 //     </div>
 //   );
 // }
+import {useState} from 'react'
+import {validateLogin} from '../utils/authValidation'
+import { UI_CONSTANTS } from '../Compontent/UI_Constants';
+import {loginUser} from '../services/authservice'
+import { TextField } from '../Compontent/Container/App_TextField';
 
-import { useState } from "react";
-import { loginUser } from "../services/authservice";
-import { validateLogin } from "../utils/authValidation";
-import { saveToken } from "../utils/tokenStorage";
+export default function loginPage() {
+const [form, setForm] = useState({email:"",password:""});
+const [message,setMessage]=useState('');
 
-export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
 
-  async function handleLogin() {
-    const validationMessage = validateLogin(email, password);
+const formHandler=(e) =>{
 
+    console.log(e.target);
+    console.log(e.target.value);
+    setForm({...form,[e.target.name]:e.target.value})
+}
+
+
+async function handleLogin(event) {
+    event.preventDefault();
+    const validationMessage = validateLogin({...form});
+``
     if (validationMessage) {
       setMessage(validationMessage);
       return;
     }
 
-    const data = await loginUser({ email, password });
+    const data = await loginUser({...form});
 
     if (data.token) {
       saveToken(data.token);
-      setMessage("Login successful");
+      setMessage(UI_CONSTANTS.validtionMessages.loginSuccessful);
     } else {
-      setMessage("Login failed");
+      setMessage(UI_CONSTANTS.validtionMessages.loginFailed);
     }
   }
-
   return (
     <div>
-      <h1>Login</h1>
-      <input value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={handleLogin}>Login</button>
+      <h1>{UI_CONSTANTS.placeHolder.login}</h1>
+      <form onSubmit={async(e)=>handleLogin(e)}>
+      <TextField value={form.email} onChange={formHandler} name={UI_CONSTANTS.names.email} />
+      <TextField value={form.password} onChange={formHandler} name={UI_CONSTANTS.names.password} />
+      <button type="submit">{UI_CONSTANTS.placeHolder.login}</button>
       <p>{message}</p>
+      </form>
     </div>
   );
 }

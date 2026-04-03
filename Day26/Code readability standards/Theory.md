@@ -1,6 +1,3 @@
-Absolutely — here is **Code Readability Standards** in your **final structured template** (clean, beginner → advanced → practical → interview-ready).
-
----
 
 # Code Readability Standards
 
