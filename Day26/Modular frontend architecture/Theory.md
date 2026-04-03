@@ -79,7 +79,7 @@ We use modular frontend architecture when:
 * dashboards
 * ecommerce apps
 * admin panels
-* SaaS platforms
+* SaaS platforms (IAAS)(CAAS)(FAAS)
 * design systems
 * large single-page applications
 * apps with many reusable UI pieces
