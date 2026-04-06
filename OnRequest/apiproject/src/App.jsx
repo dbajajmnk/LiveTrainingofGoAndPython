@@ -5,6 +5,7 @@ import { SearchText } from './components/SeachText';
 import { SearchBar } from './components/SearchBar';
 import PostList from './components/PostList';
 import { Comments } from './components/CommentsList';
+import { AppConstants } from './util/AppConstants';
 
 function App() {
   const [prompt, setPrompt] = useState('')
@@ -40,7 +41,7 @@ function App() {
     <h1>Welcome to Our Team app</h1>
     <Counter></Counter>
     <Comments></Comments>
-    <PostList url="https://jsonplaceholder.typicode.com/posts"></PostList>
+    <PostList url={AppConstants.apiEndPoints.posts}></PostList>
     <SearchBar searchText={searchText} setSearchText={setSearchText}/>
     <SearchText searchText={searchText}/>
      <form onSubmit={onSubmit}>
