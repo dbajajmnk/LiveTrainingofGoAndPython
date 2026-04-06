@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { getComments } from "../services/PostService";
+import { getData } from "../services/PostService";
 
 export function Comments() {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
     async function loadCourses() {
-      const data = await getComments("https://jsonplaceholder.typicode.com/comments");
-      setComments(await data.json());
+      const data = await getData("https://jsonplaceholder.typicode.com/comments");
+      setComments(data);
     }
 
     loadCourses();

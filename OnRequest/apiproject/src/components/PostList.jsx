@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {getData} from "../services/PostService.js";
 
 export default function PostList({url}) {
   const [users, setUsers] = useState([]);
@@ -9,16 +10,9 @@ export default function PostList({url}) {
     try {
       setLoading(true);
       setError("");
-
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        throw new Error("Unable to load users");
-      }
-
-      const data = await response.json();
-      console.log("Data",data);
-      setUsers(data);
+      const response = await getData(url);
+      console.log("Data",response);
+      setUsers(response);
     } catch (err) {
       setError("Could not load users. Please try again.");
     } finally {
