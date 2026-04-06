@@ -1,7 +1,3 @@
-Absolutely — here is **Design Patterns in JavaScript** in your **final standard structured template**: beginner-friendly, step by step, with real use cases, code examples, MCQs, subjective questions, assignments, mini projects, interview notes, and summary.
-
----
-
 # Design Patterns in JavaScript
 
 ## 1) What are Design Patterns in JavaScript?
