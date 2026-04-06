@@ -5,7 +5,7 @@ import { SearchText } from './components/SeachText';
 import { SearchBar } from './components/SearchBar';
 import PostList from './components/PostList';
 
-async function App() {
+function App() {
   const [prompt, setPrompt] = useState('')
   const [validationError, setValidationError] = useState('');
   const [searchText,setSearchText]=useState();
@@ -38,7 +38,7 @@ async function App() {
     <>
     <h1>Welcome to Our Team app</h1>
     <Counter></Counter>
-    <PostList></PostList>
+    <PostList url="https://jsonplaceholder.typicode.com/posts"></PostList>
     <SearchBar searchText={searchText} setSearchText={setSearchText}/>
     <SearchText searchText={searchText}/>
      <form onSubmit={onSubmit}>

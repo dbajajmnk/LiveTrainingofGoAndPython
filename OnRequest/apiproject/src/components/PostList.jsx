@@ -17,6 +17,7 @@ export default function PostList({url}) {
       }
 
       const data = await response.json();
+      console.log("Data",data);
       setUsers(data);
     } catch (err) {
       setError("Could not load users. Please try again.");
@@ -33,7 +34,7 @@ export default function PostList({url}) {
       {error && <p>{error}</p>}
 
       {users.map((user) => (
-        <div key={user.id}>{user.name}</div>
+        <div key={user.id}>{user.title}</div>
       ))}
     </div>
   );
