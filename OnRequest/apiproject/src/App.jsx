@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import {Counter} from './components/Counter'
 
 function App() {
   const [prompt, setPrompt] = useState('')
@@ -31,6 +32,7 @@ function App() {
   return (
     <>
     <h1>Welcome to Our Team app</h1>
+    <Counter></Counter>
      <form onSubmit={onSubmit}>
       <input type="text" name="userinput" placeholder="What is in your mind?" value={prompt} onChange={handleInput}/>
       {validationError ? <h2>{validationError}</h2> : null}

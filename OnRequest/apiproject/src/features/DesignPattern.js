@@ -125,30 +125,7 @@ console.log(counter.getCount());
 
 
 /******************************* Decorator ***************************/
-function car(model,price,company,name){
-    return {
-        model:model,
-        price:price,
-        company:company,
-        features:["Airbags","Power Staring"],
-        name:name
-    }
-}
-const nexon = car("Plus Plus",50000,"Tata","Nexon")
 
-function addSunroof(car){
-    car.price+=2000;
-    car.features.push("Sunroof");
-    return car;
-}
-function addMusicPlayer(car){
-    car.price+=1000;
-    car.features.push("Harman Music System");
-    return car;
-}
-addSunroof(nexon);
-addMusicPlayer(nexon);
-console.log(nexon);
 /******************************* Observer ***************************/
 class Subject {
     constructor(){
@@ -180,6 +157,35 @@ newSubject.notify("Hello guys you are awesome");
 
 
 /******************************* Facade ****************************/
+const orderPlacement= {
+        oderRecieved(){
+            console.log("Order Recieved");
+        },
+        orderPaymentDone(){
+            console.log("Order Payment Done");
+        },
+        orderPacked(){
+            console.log("Order Packaged")
+        },
+        orderDispactched(){
+            console.log("Order Dispatched for Delivery");
+
+        },
+        orderDelivered(){
+            console.log("Order Delivered")
+        }
+
+
+}
+function processOrder(){
+    orderPlacement.oderRecieved();
+    orderPlacement.orderPaymentDone();
+    orderPlacement.orderPacked();
+    orderPlacement.orderDispactched();
+    orderPlacement.orderDelivered();
+}
+processOrder();
+
 /******************************* Stratedgy ************************/
 const payment = {
     upi(amount){
