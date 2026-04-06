@@ -8,7 +8,18 @@ export const getPosts = async (url)=>{
         throw new Error(e);
     }
 
-    return data;
+   
+
+}
+export const getComments = async (url)=>{
+    try{
+    const result = await fetch(url);
+    console.log(result);
+    return result;
+   
+    }catch(e){
+        throw new Error(e);
+    }
 
 }
 
