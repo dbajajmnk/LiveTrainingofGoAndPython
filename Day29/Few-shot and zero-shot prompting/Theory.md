@@ -1,12 +1,3 @@
-Absolutely—here is **Few-shot vs Zero-shot Prompting** built using your **FINAL LOCKED MASTER TEMPLATE (V4 – ABSOLUTE)**
-
-✅ Python + OpenAI
-✅ Real-world use cases with code
-✅ Debugging + Failure + System Design
-✅ Strict Q&A separation
-
----
-
 # 🧱 Few-shot vs Zero-shot Prompting (Python + OpenAI)
 
 ---

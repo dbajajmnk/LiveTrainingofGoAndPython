@@ -1,9 +1,17 @@
 import { useState } from 'react'
 import './App.css'
+import {Counter} from './components/Counter'
+import { SearchText } from './components/SeachText';
+import { SearchBar } from './components/SearchBar';
+import PostList from './components/PostList';
+import { Comments } from './components/CommentsList';
+import { AppConstants } from './util/AppConstants';
 
 function App() {
   const [prompt, setPrompt] = useState('')
   const [validationError, setValidationError] = useState('');
+  const [searchText,setSearchText]=useState();
+
 
   const handleInput = (e) =>{ 
     setPrompt(e.target.value);
@@ -31,6 +39,11 @@ function App() {
   return (
     <>
     <h1>Welcome to Our Team app</h1>
+    <Counter></Counter>
+    <Comments></Comments>
+    <PostList url={AppConstants.apiEndPoints.posts}></PostList>
+    <SearchBar searchText={searchText} setSearchText={setSearchText}/>
+    <SearchText searchText={searchText}/>
      <form onSubmit={onSubmit}>
       <input type="text" name="userinput" placeholder="What is in your mind?" value={prompt} onChange={handleInput}/>
       {validationError ? <h2>{validationError}</h2> : null}
