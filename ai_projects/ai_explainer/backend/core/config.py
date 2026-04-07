@@ -1,17 +1,23 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    """
-    SOLID Principle: Single Responsibility Principle (SRP).
-    This class is purely responsible for loading and validating application settings,
-    primarily from environment variables.
-    """
-    PROJECT_NAME: str = "AI Explainer API"
-    GEMINI_API_KEY: str
+    PROJECT_NAME: str = "OpenAI Capability Explorer API"
+    API_PREFIX: str = "/api"
+    OPENAI_API_KEY: str = ""
+    CHAT_MODEL: str = "gpt-4.1-mini"
+    EMBEDDING_MODEL: str = "text-embedding-3-small"
+    MODERATION_MODEL: str = "omni-moderation-latest"
+    IMAGE_MODEL: str = "gpt-image-1"
+    MONGO_URI: str = "mongodb://localhost:27017"
+    MONGO_DB_NAME: str = "ai_explorer_db"
+    JWT_SECRET_KEY: str = "change_this_secret_in_production"
+    JWT_ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 120
 
-    class Config:
-        case_sensitive = True
-        env_file = ".env"
+    model_config = SettingsConfigDict(
+        case_sensitive=True,
+        env_file=".env",
+        extra="ignore",
+    )
 
-# Instantiate settings to be used throughout the app
 settings = Settings()

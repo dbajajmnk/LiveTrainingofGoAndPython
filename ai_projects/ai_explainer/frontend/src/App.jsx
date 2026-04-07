@@ -1,120 +1,171 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [capabilities, setCapabilities] = useState([])
+  const [health, setHealth] = useState({ status: 'checking', message: 'Checking backend...' })
+  const [activeTab, setActiveTab] = useState('chat')
+  const [loading, setLoading] = useState(false)
+  const [result, setResult] = useState(null)
+
+  const [prompt, setPrompt] = useState('Explain retrieval augmented generation in simple words.')
+  const [structuredPrompt, setStructuredPrompt] = useState('Give a concise project brief for an AI customer support bot.')
+  const [embeddingText, setEmbeddingText] = useState('OpenAI embeddings convert text into semantic vectors.')
+  const [moderationText, setModerationText] = useState('This is a harmless sentence for moderation check.')
+  const [imagePrompt, setImagePrompt] = useState('A clean futuristic dashboard UI with purple accents.')
+
+  useEffect(() => {
+    fetch(`${API_BASE}/api/health`)
+      .then((res) => res.json())
+      .then((data) =>
+        setHealth({
+          status: data.status === 'ok' ? 'ok' : 'error',
+          message: data.status === 'ok' ? 'Backend connected' : 'Backend unhealthy',
+        }),
+      )
+      .catch(() => setHealth({ status: 'error', message: 'Backend unreachable' }))
+
+    fetch(`${API_BASE}/api/capabilities`)
+      .then((res) => res.json())
+      .then((data) => setCapabilities(data.capabilities || []))
+      .catch(() => setCapabilities([]))
+  }, [])
+
+  const tabs = useMemo(
+    () => ['chat', 'structured', 'embeddings', 'moderation', 'image', 'models'],
+    [],
+  )
+
+  const run = async (path, payload) => {
+    setLoading(true)
+    setResult(null)
+    try {
+      const options = payload
+        ? {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          }
+        : { method: 'GET' }
+      const res = await fetch(`${API_BASE}${path}`, options)
+      const data = await res.json()
+      if (!res.ok) {
+        throw new Error(data.detail || 'Request failed')
+      }
+      setResult(data)
+    } catch (error) {
+      setResult({ error: error.message })
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app">
+      <header>
+        <h1>OpenAI Capability Explorer</h1>
+        <p>Python + FastAPI backend and React + JavaScript + Vite frontend</p>
+        <p className={health.status === 'ok' ? 'health ok' : 'health error'}>
+          {health.message} ({API_BASE})
+        </p>
+      </header>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+      <section className="card">
+        <h2>Available Capabilities</h2>
+        <div className="chips">
+          {capabilities.map((item) => (
+            <span key={item.id} className="chip">
+              {item.title}
+            </span>
+          ))}
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <section className="card">
+        <h2>Try Endpoints</h2>
+        <div className="tabs">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              className={activeTab === tab ? 'tab active' : 'tab'}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        {activeTab === 'chat' && (
+          <div className="panel">
+            <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} rows={4} />
+            <button onClick={() => run('/api/chat', { prompt })}>Run Chat</button>
+          </div>
+        )}
+
+        {activeTab === 'structured' && (
+          <div className="panel">
+            <textarea value={structuredPrompt} onChange={(e) => setStructuredPrompt(e.target.value)} rows={4} />
+            <button onClick={() => run('/api/structured', { prompt: structuredPrompt })}>Run Structured Output</button>
+          </div>
+        )}
+
+        {activeTab === 'embeddings' && (
+          <div className="panel">
+            <textarea value={embeddingText} onChange={(e) => setEmbeddingText(e.target.value)} rows={4} />
+            <button onClick={() => run('/api/embeddings', { text: embeddingText })}>Run Embeddings</button>
+          </div>
+        )}
+
+        {activeTab === 'moderation' && (
+          <div className="panel">
+            <textarea value={moderationText} onChange={(e) => setModerationText(e.target.value)} rows={4} />
+            <button onClick={() => run('/api/moderation', { text: moderationText })}>Run Moderation</button>
+          </div>
+        )}
+
+        {activeTab === 'image' && (
+          <div className="panel">
+            <textarea value={imagePrompt} onChange={(e) => setImagePrompt(e.target.value)} rows={4} />
+            <button onClick={() => run('/api/image', { prompt: imagePrompt })}>Generate Image</button>
+          </div>
+        )}
+
+        {activeTab === 'models' && (
+          <div className="panel">
+            <button onClick={() => run('/api/models')}>List Models</button>
+          </div>
+        )}
+
+        {loading && <p>Loading...</p>}
+
+        {result && (
+          <div className="result">
+            <h3>Response</h3>
+            <pre>{JSON.stringify(result, null, 2)}</pre>
+            {Array.isArray(result.models) && (
+              <p className="meta">Loaded {result.models.length} models.</p>
+            )}
+            {result.output?.base64 && (
+              <img
+                src={`data:image/png;base64,${result.output.base64}`}
+                alt="Generated"
+                className="generated"
+              />
+            )}
+          </div>
+        )}
+      </section>
+
+      <section className="card">
+        <h2>Backend</h2>
+        <p>
+          FastAPI endpoints: <code>/api/chat</code>, <code>/api/structured</code>, <code>/api/embeddings</code>,{' '}
+          <code>/api/moderation</code>, <code>/api/image</code>, <code>/api/models</code>
+        </p>
+      </section>
+    </div>
   )
 }
 
