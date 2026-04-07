@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useAuth } from "../auth/AuthContext";
-import { apiClient } from "../../services/apiClient";
+import { apiClient, formatApiDetail } from "../../services/apiClient";
 
 const tabList = ["chat", "structured", "embeddings", "moderation", "image", "models"];
 
@@ -61,7 +61,8 @@ export default function CapabilityLabPage() {
       });
       setResult(data);
     } catch (err) {
-      setError(err.message);
+      const msg = err instanceof Error ? err.message : formatApiDetail(err);
+      setError(msg);
     } finally {
       setLoading(false);
     }

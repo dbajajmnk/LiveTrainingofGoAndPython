@@ -1,4 +1,5 @@
 import json
+import re
 
 from openai import OpenAI
 
@@ -16,6 +17,22 @@ class OpenAIService:
             raise ValueError("OPENAI_API_KEY is missing in backend .env")
         self.client = OpenAI(api_key=settings.OPENAI_API_KEY)
         return self.client
+
+    @staticmethod
+    def _parse_model_json(content: str) -> dict:
+        """Models often wrap JSON in markdown fences; strip and parse safely."""
+        text = (content or "").strip()
+        fence = re.search(r"```(?:json)?\s*([\s\S]*?)```", text)
+        if fence:
+            text = fence.group(1).strip()
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError:
+            start = text.find("{")
+            end = text.rfind("}")
+            if start != -1 and end > start:
+                return json.loads(text[start : end + 1])
+            raise ValueError("Model did not return valid JSON. Try simplifying the prompt.") from None
 
     def list_capabilities(self):
         return [
@@ -73,7 +90,7 @@ class OpenAIService:
             prompt=f"{schema_prompt}\n\nUser prompt: {prompt}",
             model=model or settings.CHAT_MODEL,
         )
-        return json.loads(content)
+        return self._parse_model_json(content)
 
     def embedding(self, text: str, model: str | None = None):
         client = self._get_client()

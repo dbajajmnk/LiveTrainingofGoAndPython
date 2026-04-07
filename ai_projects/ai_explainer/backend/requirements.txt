@@ -5,6 +5,5 @@ pydantic
 pydantic-settings
 python-dotenv
 motor
-passlib[bcrypt]
 python-jose
 email-validator
