@@ -583,6 +583,168 @@ def _topic1_subjectives(*, now: datetime) -> list[dict[str, Any]]:
     ]
 
 
+def _module1_topic_pairs() -> list[tuple[ObjectId, str]]:
+    return [
+        (IDS.t01_what_is_openai, "What is OpenAI?"),
+        (IDS.t02_ai_vs_ml_vs_llm, "AI vs ML vs LLM vs Generative AI"),
+        (IDS.t03_problems_openai_solves, "What problems OpenAI solves"),
+        (IDS.t04_platform_overview, "OpenAI platform overview"),
+        (IDS.t05_models_overview, "Models overview"),
+        (IDS.t06_tokens_context, "Tokens and context window"),
+        (IDS.t07_temperature_top_p, "Temperature, top_p, and max_tokens"),
+        (IDS.t08_api_first_thinking, "API-first thinking"),
+        (IDS.t09_common_use_cases, "Common use cases"),
+        (IDS.t10_limitations, "Limitations and misconceptions"),
+    ]
+
+
+def _topic_content_doc(topic_order: int, topic_id: ObjectId, topic_title: str, *, now: datetime) -> dict[str, Any]:
+    if topic_order == 1:
+        return _topic1_content_doc(now=now)
+
+    slug_hint = topic_title.lower().replace(" ", "-")
+    return {
+        "_id": ObjectId(f"{0xD000 + topic_order:024x}"),
+        "topicId": str(topic_id),
+        "highLevelConcept": (
+            f"{topic_title} gives a practical foundation for developers building AI-powered products. "
+            f"It explains the key idea in simple language and how to apply it in day-to-day engineering work."
+        ),
+        "deepConcept": (
+            f"This topic dives deeper into {topic_title}. "
+            "You should understand what this concept means, where it is used, common mistakes, and how to apply it safely in backend + frontend architecture. "
+            "Focus on decision-making: when to use it, how to validate outputs, and how to keep business logic in your application layer."
+        ),
+        "walkthrough": [
+            f"Define the core concept of: {topic_title}",
+            "Connect the concept to an API request/response flow",
+            "Show one backend implementation pattern",
+            "Show one frontend usage pattern",
+            "List one common mistake and one best practice",
+        ],
+        "demo": {
+            "title": f"Live mini demo: {topic_title}",
+            "problem": "Learners need hands-on testing instead of static theory.",
+            "solutionSummary": "Use the built-in explainer demo to generate structured concept output.",
+            "expectedOutputExample": {
+                "title": topic_title,
+                "highLevel": "Short beginner explanation.",
+                "deepLevel": "Slightly technical explanation.",
+                "realWorldExample": "One practical product example.",
+                "practiceSuggestion": f"Implement one small API/UI feature for {slug_hint}.",
+            },
+        },
+        "developerManual": {
+            "goal": f"Apply {topic_title} in a FastAPI + React workflow.",
+            "backendFlow": [
+                "Read user input and validate it",
+                "Prepare prompt/instructions",
+                "Call AI API endpoint",
+                "Return structured JSON response",
+                "Render response in frontend section UI",
+            ],
+            "expectedOutputExample": {
+                "title": topic_title,
+                "highLevel": "Clear summary",
+                "deepLevel": "Engineering depth",
+                "realWorldExample": "Production use case",
+                "practiceSuggestion": "Build and test one endpoint",
+            },
+        },
+        "practiceUseCase": {
+            "title": f"{topic_title} Practice Assistant",
+            "problem": "Learners forget concepts without applying them.",
+            "practiceGoal": f"Build one practical feature that uses {topic_title}.",
+        },
+        "keyTakeaways": [
+            f"{topic_title} is important for reliable AI feature design.",
+            "Backend still enforces rules, validation, and permissions.",
+            "Frontend should consume structured responses and present clear UX.",
+            "Measure output quality with tests and edge-case checks.",
+        ],
+        "createdAt": now,
+        "updatedAt": now,
+    }
+
+
+def _topic_mcqs(topic_order: int, topic_id: ObjectId, topic_title: str) -> list[dict[str, Any]]:
+    if topic_order == 1:
+        return _topic1_mcqs(now=_now())
+
+    tid = str(topic_id)
+    base = 0xE000 + (topic_order * 0x10)
+    return [
+        {
+            "_id": ObjectId(f"{base + 1:024x}"),
+            "topicId": tid,
+            "question": f"What is the best summary of '{topic_title}' for developers?",
+            "options": [
+                "It replaces backend logic completely",
+                "It is a practical concept used to improve AI feature reliability",
+                "It removes the need for validation",
+                "It only matters for UI styling",
+            ],
+            "correctAnswer": "It is a practical concept used to improve AI feature reliability",
+            "explanation": f"{topic_title} helps developers build more reliable AI workflows.",
+            "order": 1,
+        },
+        {
+            "_id": ObjectId(f"{base + 2:024x}"),
+            "topicId": tid,
+            "question": "Which layer must still enforce business rules?",
+            "options": ["AI model only", "Browser cache", "Application backend", "CDN layer"],
+            "correctAnswer": "Application backend",
+            "explanation": "Business rules and access control remain backend responsibilities.",
+            "order": 2,
+        },
+        {
+            "_id": ObjectId(f"{base + 3:024x}"),
+            "topicId": tid,
+            "question": "What is the best way to learn this topic?",
+            "options": [
+                "Read once and skip implementation",
+                "Use trial-and-error without tests",
+                "Implement a small feature and verify behavior with real inputs",
+                "Only memorize definitions",
+            ],
+            "correctAnswer": "Implement a small feature and verify behavior with real inputs",
+            "explanation": "Practical implementation plus validation gives stronger understanding.",
+            "order": 3,
+        },
+    ]
+
+
+def _topic_subjectives(topic_order: int, topic_id: ObjectId, topic_title: str) -> list[dict[str, Any]]:
+    if topic_order == 1:
+        return _topic1_subjectives(now=_now())
+
+    tid = str(topic_id)
+    base = 0xF000 + (topic_order * 0x10)
+    return [
+        {
+            "_id": ObjectId(f"{base + 1:024x}"),
+            "topicId": tid,
+            "question": f"Explain '{topic_title}' in your own words.",
+            "sampleAnswer": f"{topic_title} is a practical concept that helps developers design reliable AI features.",
+            "order": 1,
+        },
+        {
+            "_id": ObjectId(f"{base + 2:024x}"),
+            "topicId": tid,
+            "question": f"How would you apply '{topic_title}' in a FastAPI + React project?",
+            "sampleAnswer": "Use backend validation and structured responses, then render clear sections in frontend.",
+            "order": 2,
+        },
+        {
+            "_id": ObjectId(f"{base + 3:024x}"),
+            "topicId": tid,
+            "question": f"What common mistake should be avoided when implementing '{topic_title}'?",
+            "sampleAnswer": "Do not move business rules into prompts only; enforce rules in backend services.",
+            "order": 3,
+        },
+    ]
+
+
 async def seed_open_ai_mastery(*, verbose: bool = True) -> dict[str, int]:
     now = _now()
 
@@ -620,22 +782,19 @@ async def seed_open_ai_mastery(*, verbose: bool = True) -> dict[str, int]:
         await topics.replace_one({"_id": doc["_id"]}, doc, upsert=True)
         counts["topics"] += 1
 
-    # Topic 1 content
-    await topic_contents.replace_one(
-        {"_id": IDS.tc_t01},
-        _topic1_content_doc(now=now),
-        upsert=True,
-    )
-    counts["topic_contents"] += 1
+    # Module 1 full content + assessments (all 10 topics)
+    for idx, (topic_oid, topic_title) in enumerate(_module1_topic_pairs(), start=1):
+        content_doc = _topic_content_doc(idx, topic_oid, topic_title, now=now)
+        await topic_contents.replace_one({"_id": content_doc["_id"]}, content_doc, upsert=True)
+        counts["topic_contents"] += 1
 
-    # Topic 1 assessments
-    for doc in _topic1_mcqs(now=now):
-        await mcqs.replace_one({"_id": doc["_id"]}, doc, upsert=True)
-        counts["mcqs"] += 1
+        for doc in _topic_mcqs(idx, topic_oid, topic_title):
+            await mcqs.replace_one({"_id": doc["_id"]}, doc, upsert=True)
+            counts["mcqs"] += 1
 
-    for doc in _topic1_subjectives(now=now):
-        await subjectives.replace_one({"_id": doc["_id"]}, doc, upsert=True)
-        counts["subjective_questions"] += 1
+        for doc in _topic_subjectives(idx, topic_oid, topic_title):
+            await subjectives.replace_one({"_id": doc["_id"]}, doc, upsert=True)
+            counts["subjective_questions"] += 1
 
     if verbose:
         print("Seeded Open AI Mastery:", counts)  # noqa: T201
