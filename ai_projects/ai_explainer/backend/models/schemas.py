@@ -28,6 +28,20 @@ class ImageRequest(BaseModel):
     size: str = "1024x1024"
 
 
+class AIExplainRequest(BaseModel):
+    concept: str = Field(..., min_length=2)
+    level: str = Field(default="beginner", pattern="^(beginner|intermediate|advanced)$")
+    model: str | None = None
+
+
+class AIExplainResponse(BaseModel):
+    title: str
+    highLevel: str
+    deepLevel: str
+    realWorldExample: str
+    practiceSuggestion: str
+
+
 class SignupRequest(BaseModel):
     name: str = Field(..., min_length=2)
     email: EmailStr

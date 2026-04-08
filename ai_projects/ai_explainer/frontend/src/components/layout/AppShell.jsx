@@ -28,6 +28,9 @@ export default function AppShell() {
           <Button component={RouterLink} to="/capabilities" color="inherit">
             Capabilities
           </Button>
+          <Button component={RouterLink} to="/learning/courses" color="inherit">
+            Learning
+          </Button>
           {user && (
             <Typography variant="body2" sx={{ display: { xs: "none", md: "block" } }}>
               {user.name}

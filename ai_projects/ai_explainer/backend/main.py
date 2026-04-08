@@ -1,10 +1,22 @@
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 import uvicorn
 
-from core.database import get_users_collection
+from core.database import (
+    get_courses_collection,
+    get_mcq_attempts_collection,
+    get_mcqs_collection,
+    get_modules_collection,
+    get_subjective_questions_collection,
+    get_topic_contents_collection,
+    get_topics_collection,
+    get_user_progress_collection,
+    get_users_collection,
+)
+from core.deps import get_current_user
 from models.schemas import (
+    AIExplainRequest,
+    AIExplainResponse,
     ChatRequest,
     EmbeddingRequest,
     ForgotPasswordRequest,
@@ -17,6 +29,7 @@ from models.schemas import (
     TokenResponse,
     UserOut,
 )
+from routers import learning as learning_router
 from services.auth_service import auth_service
 from services.openai_service import openai_service
 
@@ -34,18 +47,37 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-auth_scheme = HTTPBearer()
-
-
-async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(auth_scheme)):
-    token = credentials.credentials
-    return await auth_service.get_user_by_token(token)
+app.include_router(learning_router.router)
 
 
 @app.on_event("startup")
 async def startup_db_indexes():
     users = get_users_collection()
     await users.create_index("email", unique=True)
+
+    courses = get_courses_collection()
+    await courses.create_index([("isPublished", 1), ("order", 1)])
+
+    modules = get_modules_collection()
+    await modules.create_index([("courseId", 1), ("order", 1)])
+
+    topics = get_topics_collection()
+    await topics.create_index([("moduleId", 1), ("order", 1)])
+
+    topic_contents = get_topic_contents_collection()
+    await topic_contents.create_index("topicId", unique=True)
+
+    mcqs = get_mcqs_collection()
+    await mcqs.create_index([("topicId", 1), ("order", 1)])
+
+    subjective_questions = get_subjective_questions_collection()
+    await subjective_questions.create_index([("topicId", 1), ("order", 1)])
+
+    user_progress = get_user_progress_collection()
+    await user_progress.create_index([("userId", 1), ("courseId", 1)], unique=True)
+
+    mcq_attempts = get_mcq_attempts_collection()
+    await mcq_attempts.create_index([("userId", 1), ("topicId", 1)])
 
 
 @app.post("/api/auth/signup", response_model=TokenResponse)
@@ -156,6 +188,19 @@ def image(request: ImageRequest):
             size=request.size,
         )
         return {"output": output}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/ai/explain", response_model=AIExplainResponse)
+def ai_explain(request: AIExplainRequest):
+    try:
+        output = openai_service.explain_concept(
+            concept=request.concept,
+            level=request.level,
+            model=request.model,
+        )
+        return output
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

@@ -135,5 +135,22 @@ class OpenAIService:
         ids = sorted([model.id for model in response.data])
         return ids[:100]
 
+    def explain_concept(self, concept: str, level: str = "beginner", model: str | None = None):
+        prompt = (
+            "Return ONLY valid JSON with keys exactly: "
+            "title (string), highLevel (string), deepLevel (string), "
+            "realWorldExample (string), practiceSuggestion (string).\n"
+            f"Audience level: {level}.\n"
+            f"Concept: {concept}\n"
+            "Keep output concise, practical, and learner-friendly."
+        )
+        content = self.chat(prompt=prompt, model=model or settings.CHAT_MODEL)
+        parsed = self._parse_model_json(content)
+        required = ["title", "highLevel", "deepLevel", "realWorldExample", "practiceSuggestion"]
+        for key in required:
+            if key not in parsed or not isinstance(parsed[key], str) or not parsed[key].strip():
+                raise ValueError(f"Missing or invalid key in model response: {key}")
+        return parsed
+
 
 openai_service = OpenAIService()
