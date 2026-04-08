@@ -308,6 +308,8 @@ def _module_docs(*, now: datetime) -> list[dict[str, Any]]:
             "updatedAt": now,
         },
     ]
+    for module in modules:
+        module["topicCount"] = 10 if module["order"] == 1 else 5
     return modules
 
 
@@ -598,13 +600,75 @@ def _module1_topic_pairs() -> list[tuple[ObjectId, str]]:
     ]
 
 
-def _topic_content_doc(topic_order: int, topic_id: ObjectId, topic_title: str, *, now: datetime) -> dict[str, Any]:
-    if topic_order == 1:
+def _other_module_topic_blueprints() -> dict[int, list[str]]:
+    return {
+        2: ["Chat completions basics", "Request parameters and roles", "Error handling and retries", "Rate limits and backoff", "Response parsing patterns"],
+        3: ["Prompt anatomy", "Instruction hierarchy", "Few-shot examples", "Prompt debugging", "Prompt guardrails"],
+        4: ["JSON schema mindset", "Consistent output formatting", "Validation and fallback logic", "Response post-processing", "Production output contracts"],
+        5: ["FastAPI endpoint structure", "Service layer prompts", "Error handling in APIs", "Auth and usage checks", "Logging and observability"],
+        6: ["React data fetching patterns", "Rendering AI states", "Form UX for AI inputs", "Handling latency and retries", "Display structured AI results"],
+        7: ["Embedding fundamentals", "Vector similarity basics", "Indexing strategy", "Semantic search flow", "Embedding quality checks"],
+        8: ["RAG architecture basics", "Document chunking", "Retriever + generator flow", "Source grounding", "RAG evaluation basics"],
+        9: ["Tool schema design", "Function calling lifecycle", "Tool execution safety", "Result validation", "Fallback and retries"],
+        10: ["Agent loop fundamentals", "Task decomposition", "Tool orchestration", "State management", "Stopping criteria and safety"],
+        11: ["Moderation strategy", "Input/output policy checks", "Security boundaries", "PII considerations", "Human-in-the-loop controls"],
+        12: ["Token cost controls", "Latency optimization", "Caching patterns", "Concurrency and scaling", "Cost-performance tradeoffs"],
+        13: ["Golden test cases", "Automated eval metrics", "Regression testing for prompts", "Quality thresholds", "Continuous evaluation loops"],
+        14: ["Project scoping", "Backend architecture blueprint", "Frontend integration plan", "Deployment checklist", "Post-launch monitoring"],
+    }
+
+
+def _other_module_topic_docs(*, now: datetime) -> list[dict[str, Any]]:
+    course_id = str(IDS.course_open_ai_mastery)
+    module_map = {m["order"]: m for m in _module_docs(now=now)}
+    blueprints = _other_module_topic_blueprints()
+    docs: list[dict[str, Any]] = []
+    for module_order, topic_titles in blueprints.items():
+        module = module_map[module_order]
+        for idx, title in enumerate(topic_titles, start=1):
+            oid_val = ObjectId(f"{0xC100 + module_order * 0x20 + idx:024x}")
+            docs.append(
+                {
+                    "_id": oid_val,
+                    "courseId": course_id,
+                    "moduleId": str(module["_id"]),
+                    "title": title,
+                    "slug": f"{module['slug']}-topic-{idx}",
+                    "shortDescription": f"Practical understanding of {title.lower()} in {module['title']}.",
+                    "order": idx,
+                    "estimatedMinutes": 10,
+                    "isPublished": True,
+                    "unlockRules": {
+                        "requireViewBeforeMcq": True,
+                        "requireMcqPassBeforeSubjective": True,
+                        "mcqPassThreshold": 1.0,
+                    },
+                    "createdAt": now,
+                    "updatedAt": now,
+                }
+            )
+    return docs
+
+
+def _topic_content_doc(
+    module_order: int,
+    topic_order: int,
+    topic_id: ObjectId,
+    topic_title: str,
+    *,
+    now: datetime,
+) -> dict[str, Any]:
+    if topic_id == IDS.t01_what_is_openai:
         return _topic1_content_doc(now=now)
 
     slug_hint = topic_title.lower().replace(" ", "-")
+    content_oid = (
+        ObjectId(f"{0xD000 + topic_order:024x}")
+        if module_order == 1
+        else ObjectId(f"{0xD100 + module_order * 0x20 + topic_order:024x}")
+    )
     return {
-        "_id": ObjectId(f"{0xD000 + topic_order:024x}"),
+        "_id": content_oid,
         "topicId": str(topic_id),
         "highLevelConcept": (
             f"{topic_title} gives a practical foundation for developers building AI-powered products. "
@@ -667,12 +731,21 @@ def _topic_content_doc(topic_order: int, topic_id: ObjectId, topic_title: str, *
     }
 
 
-def _topic_mcqs(topic_order: int, topic_id: ObjectId, topic_title: str) -> list[dict[str, Any]]:
-    if topic_order == 1:
+def _topic_mcqs(
+    module_order: int,
+    topic_order: int,
+    topic_id: ObjectId,
+    topic_title: str,
+) -> list[dict[str, Any]]:
+    if topic_id == IDS.t01_what_is_openai:
         return _topic1_mcqs(now=_now())
 
     tid = str(topic_id)
-    base = 0xE000 + (topic_order * 0x10)
+    base = (
+        0xE000 + (topic_order * 0x10)
+        if module_order == 1
+        else 0xE100 + (module_order * 0x100) + (topic_order * 0x10)
+    )
     return [
         {
             "_id": ObjectId(f"{base + 1:024x}"),
@@ -714,12 +787,21 @@ def _topic_mcqs(topic_order: int, topic_id: ObjectId, topic_title: str) -> list[
     ]
 
 
-def _topic_subjectives(topic_order: int, topic_id: ObjectId, topic_title: str) -> list[dict[str, Any]]:
-    if topic_order == 1:
+def _topic_subjectives(
+    module_order: int,
+    topic_order: int,
+    topic_id: ObjectId,
+    topic_title: str,
+) -> list[dict[str, Any]]:
+    if topic_id == IDS.t01_what_is_openai:
         return _topic1_subjectives(now=_now())
 
     tid = str(topic_id)
-    base = 0xF000 + (topic_order * 0x10)
+    base = (
+        0xF000 + (topic_order * 0x10)
+        if module_order == 1
+        else 0xF100 + (module_order * 0x100) + (topic_order * 0x10)
+    )
     return [
         {
             "_id": ObjectId(f"{base + 1:024x}"),
@@ -777,22 +859,34 @@ async def seed_open_ai_mastery(*, verbose: bool = True) -> dict[str, int]:
         await modules.replace_one({"_id": doc["_id"]}, doc, upsert=True)
         counts["modules"] += 1
 
-    # Module 1 topics
-    for doc in _module1_topic_docs(now=now):
+    # Module 1 + modules 2..14 topics
+    module1_topics = _module1_topic_docs(now=now)
+    other_topics = _other_module_topic_docs(now=now)
+    for doc in [*module1_topics, *other_topics]:
         await topics.replace_one({"_id": doc["_id"]}, doc, upsert=True)
         counts["topics"] += 1
 
-    # Module 1 full content + assessments (all 10 topics)
+    # Full content + assessments for all seeded topics
+    topic_meta: list[tuple[int, int, ObjectId, str]] = []
     for idx, (topic_oid, topic_title) in enumerate(_module1_topic_pairs(), start=1):
-        content_doc = _topic_content_doc(idx, topic_oid, topic_title, now=now)
-        await topic_contents.replace_one({"_id": content_doc["_id"]}, content_doc, upsert=True)
+        topic_meta.append((1, idx, topic_oid, topic_title))
+    for topic_doc in other_topics:
+        module_order = next(
+            (m["order"] for m in _module_docs(now=now) if str(m["_id"]) == topic_doc["moduleId"]),
+            2,
+        )
+        topic_meta.append((module_order, int(topic_doc["order"]), topic_doc["_id"], topic_doc["title"]))
+
+    for module_order, topic_order, topic_oid, topic_title in topic_meta:
+        content_doc = _topic_content_doc(module_order, topic_order, topic_oid, topic_title, now=now)
+        await topic_contents.replace_one({"topicId": content_doc["topicId"]}, content_doc, upsert=True)
         counts["topic_contents"] += 1
 
-        for doc in _topic_mcqs(idx, topic_oid, topic_title):
+        for doc in _topic_mcqs(module_order, topic_order, topic_oid, topic_title):
             await mcqs.replace_one({"_id": doc["_id"]}, doc, upsert=True)
             counts["mcqs"] += 1
 
-        for doc in _topic_subjectives(idx, topic_oid, topic_title):
+        for doc in _topic_subjectives(module_order, topic_order, topic_oid, topic_title):
             await subjectives.replace_one({"_id": doc["_id"]}, doc, upsert=True)
             counts["subjective_questions"] += 1
 
