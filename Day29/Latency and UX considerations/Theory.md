@@ -1,13 +1,6 @@
-Absolutely—here is **Latency and UX Considerations** built using your **FINAL LOCKED MASTER TEMPLATE (V4 – ABSOLUTE)** with **Python + OpenAI**.
-
-OpenAI’s current docs recommend the **Responses API for new projects**, provide a dedicated **streaming guide**, and document **latency optimization** and **prompt caching** as key performance tools. ([OpenAI Developers][1])
-
 ---
-
 # 🧱 Latency and UX Considerations (Python + OpenAI)
-
 ---
-
 # 1️⃣ WHAT
 
 ### ✅ Definition
