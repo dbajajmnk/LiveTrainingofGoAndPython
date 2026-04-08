@@ -1,0 +1,103 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  background: #fff;
+}
+
+.health {
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.health.ok {
+  color: #166534;
+}
+
+.health.error {
+  color: #b91c1c;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  border: 1px solid #bbb;
+  border-radius: 14px;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tab {
+  border: 1px solid #888;
+  border-radius: 8px;
+  padding: 6px 10px;
+  background: #f5f5f5;
+  text-transform: capitalize;
+}
+
+.tab.active {
+  background: #111827;
+  color: #fff;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+button {
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #999;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 12px;
+}
+
+.meta {
+  font-size: 13px;
+  color: #334155;
+}
+
+pre {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 10px;
+  border-radius: 8px;
+  max-height: 320px;
+  overflow: auto;
+}
+
+.generated {
+  max-width: 100%;
+  margin-top: 12px;
+  border-radius: 8px;
+}

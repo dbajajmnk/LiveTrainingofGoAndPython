@@ -1,0 +1,16 @@
+# Local environment and secrets — do not commit or push to GitHub
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Python
+venv/
+.venv/
+__pycache__/
+
+# Node / Vite
+node_modules/
+dist/

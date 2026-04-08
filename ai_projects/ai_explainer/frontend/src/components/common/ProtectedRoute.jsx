@@ -1,0 +1,21 @@
+import { CircularProgress, Container } from "@mui/material";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../../features/auth/AuthContext";
+
+export default function ProtectedRoute({ children }) {
+  const { token, loadingUser } = useAuth();
+
+  if (loadingUser) {
+    return (
+      <Container sx={{ py: 6, display: "grid", placeItems: "center" }}>
+        <CircularProgress />
+      </Container>
+    );
+  }
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+}
