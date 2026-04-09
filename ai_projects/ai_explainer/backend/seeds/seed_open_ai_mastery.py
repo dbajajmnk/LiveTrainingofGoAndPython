@@ -827,6 +827,86 @@ def _topic_subjectives(
     ]
 
 
+async def _cleanup_legacy_duplicates(
+    *,
+    modules_col: Any,
+    topics_col: Any,
+    topic_contents_col: Any,
+    mcqs_col: Any,
+    subjectives_col: Any,
+    seeded_module_ids: list[ObjectId],
+    seeded_topic_ids: list[ObjectId],
+    topic_meta: list[tuple[int, int, ObjectId, str]],
+) -> dict[str, int]:
+    """
+    Remove legacy duplicates left by older seed versions.
+
+    Earlier seeds could create additional rows for the same module/topic concept
+    using different ObjectIds. Current seed uses deterministic IDs, so we keep only
+    canonical seeded docs for these learning paths.
+    """
+    removed = {
+        "modules": 0,
+        "topics": 0,
+        "topic_contents": 0,
+        "mcqs": 0,
+        "subjective_questions": 0,
+    }
+
+    # 1) Modules: keep only seeded module ids for this course.
+    mod_res = await modules_col.delete_many(
+        {
+            "courseId": str(IDS.course_open_ai_mastery),
+            "_id": {"$nin": seeded_module_ids},
+        }
+    )
+    removed["modules"] += int(mod_res.deleted_count or 0)
+
+    # 2) Topics: keep only seeded topic ids for seeded modules.
+    topic_res = await topics_col.delete_many(
+        {
+            "moduleId": {"$in": [str(m) for m in seeded_module_ids]},
+            "_id": {"$nin": seeded_topic_ids},
+        }
+    )
+    removed["topics"] += int(topic_res.deleted_count or 0)
+
+    # 3) Content/assessments: for each seeded topic, keep canonical IDs only.
+    for module_order, topic_order, topic_oid, topic_title in topic_meta:
+        canonical_content = _topic_content_doc(
+            module_order, topic_order, topic_oid, topic_title, now=_now()
+        )
+        content_res = await topic_contents_col.delete_many(
+            {
+                "topicId": str(topic_oid),
+                "_id": {"$ne": canonical_content["_id"]},
+            }
+        )
+        removed["topic_contents"] += int(content_res.deleted_count or 0)
+
+        canonical_mcq_ids = [d["_id"] for d in _topic_mcqs(module_order, topic_order, topic_oid, topic_title)]
+        mcq_res = await mcqs_col.delete_many(
+            {
+                "topicId": str(topic_oid),
+                "_id": {"$nin": canonical_mcq_ids},
+            }
+        )
+        removed["mcqs"] += int(mcq_res.deleted_count or 0)
+
+        canonical_subjective_ids = [
+            d["_id"] for d in _topic_subjectives(module_order, topic_order, topic_oid, topic_title)
+        ]
+        sub_res = await subjectives_col.delete_many(
+            {
+                "topicId": str(topic_oid),
+                "_id": {"$nin": canonical_subjective_ids},
+            }
+        )
+        removed["subjective_questions"] += int(sub_res.deleted_count or 0)
+
+    return removed
+
+
 async def seed_open_ai_mastery(*, verbose: bool = True) -> dict[str, int]:
     now = _now()
 
@@ -890,8 +970,20 @@ async def seed_open_ai_mastery(*, verbose: bool = True) -> dict[str, int]:
             await subjectives.replace_one({"_id": doc["_id"]}, doc, upsert=True)
             counts["subjective_questions"] += 1
 
+    dedupe = await _cleanup_legacy_duplicates(
+        modules_col=modules,
+        topics_col=topics,
+        topic_contents_col=topic_contents,
+        mcqs_col=mcqs,
+        subjectives_col=subjectives,
+        seeded_module_ids=[m["_id"] for m in _module_docs(now=now)],
+        seeded_topic_ids=[d["_id"] for d in [*module1_topics, *other_topics]],
+        topic_meta=topic_meta,
+    )
+
     if verbose:
         print("Seeded Open AI Mastery:", counts)  # noqa: T201
+        print("Removed legacy duplicates:", dedupe)  # noqa: T201
         print("CourseId:", str(IDS.course_open_ai_mastery))  # noqa: T201
         print("Module1Id:", str(IDS.m01_intro))  # noqa: T201
         print("Topic1Id:", str(IDS.t01_what_is_openai))  # noqa: T201

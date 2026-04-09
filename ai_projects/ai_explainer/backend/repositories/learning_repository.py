@@ -81,7 +81,11 @@ class LearningRepository:
 
     async def get_topic_content(self, topic_id: str) -> dict[str, Any] | None:
         col = get_topic_contents_collection()
-        doc = await col.find_one({"topicId": topic_id})
+        # If legacy duplicate rows exist for a topic, prefer the newest document.
+        doc = await col.find_one(
+            {"topicId": topic_id},
+            sort=[("updatedAt", -1), ("_id", -1)],
+        )
         return _with_str_id(doc)
 
     async def list_mcqs_for_topic(self, topic_id: str) -> list[dict[str, Any]]:
