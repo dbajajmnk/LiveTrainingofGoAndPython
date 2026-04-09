@@ -1,12 +1,3 @@
-Absolutely—here is **AI Security Basics** built using your **FINAL LOCKED MASTER TEMPLATE (V4 – ABSOLUTE)**
-
-✅ Python + OpenAI
-✅ Real-world security use cases with code
-✅ Debugging + Failure + System Design
-✅ Strict Q&A separation
-
----
-
 # 🧱 AI Security Basics (Python + OpenAI)
 
 ---

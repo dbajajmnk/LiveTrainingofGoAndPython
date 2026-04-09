@@ -1,0 +1,23 @@
+# Secure AI Layers — root ignores (backend + frontend)
+
+backend/.venv/
+backend/.env
+backend/.env.*
+!backend/.env.example
+backend/**/__pycache__/
+backend/**/*.py[cod]
+backend/**/.mypy_cache/
+backend/**/.pytest_cache/
+backend/**/.ruff_cache/
+
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+*.log
+.DS_Store
+Thumbs.db
+.idea/

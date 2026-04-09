@@ -1,12 +1,3 @@
-Absolutely—here is **Data Privacy Considerations** built using your **FINAL LOCKED MASTER TEMPLATE (V4 – ABSOLUTE)**
-
-✅ Python + OpenAI
-✅ Real-world privacy use cases with code
-✅ Debugging + Failure + System Design
-✅ Strict Q&A separation
-
----
-
 # 🧱 Data Privacy Considerations (Python + OpenAI)
 
 ---
@@ -609,6 +600,8 @@ Create a backend flow that:
 * masks logs
 * stores only required fields
 * deletes old records after 30 days
+
+**Runnable demo (FastAPI + React):** `ai_projects/data_privacy_lab/` — see `README.md` (Beginner = email/phone mask, Intermediate = full privacy filter + OpenAI, Advanced = masked logs + minimal in-memory store + 30-day retention + stale-row injector).
 
 ---
 

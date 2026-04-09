@@ -173,9 +173,11 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 def cost_optimized(prompt):
     short = prompt[:100]
 
+    # Requires a recent `openai` package (Responses API). Cap output tokens to control cost.
     response = client.responses.create(
         model="gpt-4.1-mini",
-        input=short
+        input=short,
+        max_output_tokens=200,
     )
 
     return response.output_text
@@ -501,6 +503,8 @@ Add caching
 ### Advanced
 
 Build cost monitor
+
+**Runnable demo (FastAPI + React):** `ai_projects/cost_control_lab/` — see `README.md` for presenter steps (Beginner = token analyze, Intermediate = cache + `max_tokens`, Advanced = session monitor + rate limit).
 
 ---
 
