@@ -1,10 +1,10 @@
-Yes — you can run an **MCP server locally** and use **Python + FastAPI** to call it.
+
 
 The cleanest local setup is:
 
 1. build a local MCP server in Python
 2. run it on `http://localhost:8000/mcp` using the official Python MCP SDK
-3. create a FastAPI app that acts as your normal backend and calls that MCP server as a client ([GitHub][1])
+3. create a FastAPI app that acts as your normal backend and calls that MCP server as a cl([GitHub][1])
 
 The official Python SDK supports creating MCP servers and clients, and supports `stdio`, `SSE`, and `Streamable HTTP` transports. The quickstart example in the SDK shows `FastMCP(...).run(transport="streamable-http")`, and its example local URL is `http://localhost:8000/mcp`. The SDK install command shown in the repo is `pip install "mcp[cli]"` or `uv add "mcp[cli]"`. ([GitHub][1])
 

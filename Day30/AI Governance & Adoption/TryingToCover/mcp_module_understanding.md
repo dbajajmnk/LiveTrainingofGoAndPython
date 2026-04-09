@@ -1,9 +1,3 @@
-Great — this is the **core of MCP client-side integration**, and understanding this properly will make your FastAPI + MCP architecture very strong.
-
-Let’s break it down **engineering-first (no fluff, deep clarity)** 👇
-
----
-
 # 🔷 1. What are these two imports?
 
 ```python

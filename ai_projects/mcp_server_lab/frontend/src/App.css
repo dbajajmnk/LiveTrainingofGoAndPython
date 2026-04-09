@@ -1,0 +1,33 @@
+.app {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 1.2rem;
+  color: #e8eaed;
+  font-family: system-ui, Segoe UI, sans-serif;
+  background: #0f1419;
+  min-height: 100vh;
+}
+
+.sub { color: #9aa0a6; margin-top: 0; }
+.meta { font-size: 0.85rem; color: #8ab4f8; }
+
+.tabs { display: flex; gap: 0.5rem; margin: 0.8rem 0; }
+.tabs button { background: #1a1f26; color: #c9d1d9; border: 1px solid #3c4043; border-radius: 8px; padding: 0.4rem 0.7rem; cursor: pointer; }
+.tabs button.active { border-color: #8ab4f8; }
+
+.panel { border: 1px solid #3c4043; border-radius: 12px; padding: 0.9rem; background: #161b22; margin-bottom: 0.8rem; }
+label { display: block; font-size: 0.78rem; color: #9aa0a6; margin-top: 0.4rem; margin-bottom: 0.2rem; }
+input, textarea, select {
+  width: 100%;
+  background: #0d1117;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+  box-sizing: border-box;
+}
+
+.run { background: #1a73e8; border: 0; border-radius: 8px; color: white; padding: 0.5rem 0.9rem; font-weight: 600; cursor: pointer; }
+.error { margin-top: 0.7rem; background: #3b1b1b; border: 1px solid #8b3a3a; color: #f8b4b4; border-radius: 8px; padding: 0.55rem; }
+.out { margin-top: 0.8rem; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 0.7rem; white-space: pre-wrap; color: #c9d1d9; }
+.hint { color: #9aa0a6; font-size: 0.82rem; }
